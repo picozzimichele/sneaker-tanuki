@@ -30,7 +30,7 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
             </div>
             {/* Info Div */}
             <div className="flex flex-col flex-1 lg:max-w-[50%] relative bg-gray-100">
-                <BackButton />
+                <BackButton href={"/explore"} />
                 <div className="flex">
                     <p className="text-xs font-bold">NEW</p>
                 </div>
