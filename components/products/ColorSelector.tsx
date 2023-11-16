@@ -34,8 +34,10 @@ export default function ColorSelector({
     }
     return (
         <Link
-            href={`?color=${"blue"}&size=${size}`}
-            className="flex w-full max-w-[30px] aspect-square items-center justify-center rounded-full hover:border-gray-800 hover:border-[1.5px] hover:cursor-pointer p-0.5"
+            href={`?color=${color}&size=${size}`}
+            className={`${
+                color === selectedColor ? "border-gray-800 border-[1.5px]" : ""
+            } flex w-full max-w-[30px] aspect-square items-center justify-center rounded-full hover:border-gray-800 hover:border-[1.5px] hover:cursor-pointer p-0.5`}
         >
             <div className={`${bgColor} h-full w-full rounded-full`}></div>
         </Link>
