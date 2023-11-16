@@ -10,6 +10,7 @@ type Props = {
 };
 
 export default async function ProductInfoPage({ searchParams, params }: Props) {
+    const selectedColor = "black";
     const colorVariants = ["blue", "red", "green", "black", "white"];
     const sizeVariants = [7, 8, 9, 10, 11, 12];
     // const productDetails = await fetchProductDetails({
@@ -44,7 +45,11 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
                         <SizeSelector size={size} key={size} />
                     ))}
                 </div>
-                <div className="flex w-full flex-wrap gap-3"></div>
+                <div className="flex w-full flex-wrap gap-3">
+                    {colorVariants.map((color) => (
+                        <ColorSelector selectedColor={selectedColor} key={color} />
+                    ))}
+                </div>
             </div>
         </div>
     );
