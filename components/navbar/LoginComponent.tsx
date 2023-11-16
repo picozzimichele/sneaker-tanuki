@@ -54,13 +54,13 @@ export default function LoginComponent() {
                                 Profile
                             </Link>
                             <Link
-                                href={"/dashboard"}
+                                href={"/explore"}
                                 onClick={() => {
                                     setOpen(false);
                                 }}
                                 className="text-sm px-4 py-2 hover:bg-gray-100 ease-in-out duration-100"
                             >
-                                Dashboard
+                                Explore
                             </Link>
                             <p
                                 onClick={() => {
