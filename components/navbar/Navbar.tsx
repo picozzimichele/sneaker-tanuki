@@ -26,11 +26,7 @@ export default async function Navbar() {
             <div className="flex w-full h-14 bg-white items-center md:hidden fixed bottom-0 border-t z-50">
                 <div className="flex w-[90%] mx-auto justify-between">
                     <MobileButton href={"/"} svg={<TanukiLogoSvg />} text="Home" />
-                    <MobileButton
-                        href={`/travels/${userId?._id.toString()}`}
-                        svg={<WorldMap />}
-                        text="Travels"
-                    />
+                    <MobileButton href={`/explore`} svg={<WorldMap />} text="Explore" />
                     <MobileButton
                         href={`/profile/${userId?._id.toString()}`}
                         svg={<UserSvg />}
