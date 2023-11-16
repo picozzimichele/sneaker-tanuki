@@ -11,9 +11,8 @@ export default function LoginComponent() {
     const [open, setOpen] = useState(false);
     const { data: session } = useSession();
     return (
-        <div className="relative">
+        <div ref={domNode} className="relative">
             <div
-                ref={domNode}
                 onClick={() => setOpen((prevState) => !prevState)}
                 className="hover:cursor-pointer border border-gray-300 rounded-full hover:shadow-lg w-[74px] pr-1 pl-[10px] h-[42px] flex justify-between items-center"
             >
