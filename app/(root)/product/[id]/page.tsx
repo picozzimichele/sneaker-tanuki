@@ -22,6 +22,9 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
     // });
     return (
         <div className="min-h-screen flex">
+            <div className="absolute md:hidden top-2 left-2 z-50">
+                <BackButton href={"/explore"} />
+            </div>
             <div className="flex flex-col min-h-full lg:flex-row w-full justify-between pt-14">
                 {/* Product Picture Div */}
                 <div className="flex flex-1 lg:max-w-[50%]">
