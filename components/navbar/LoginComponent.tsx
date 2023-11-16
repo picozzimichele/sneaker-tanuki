@@ -11,34 +11,36 @@ export default function LoginComponent() {
     const [open, setOpen] = useState(false);
     const { data: session } = useSession();
     return (
-        <div
-            ref={domNode}
-            onClick={() => setOpen((prevState) => !prevState)}
-            className="hover:cursor-pointer relative border border-gray-300 rounded-full hover:shadow-lg w-[74px] pr-1 pl-[10px] h-[42px] flex justify-between items-center"
-        >
-            <div>
-                <svg
-                    className="fill-current h-[14px] w-[14px]"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                </svg>
-            </div>
-            <div className="flex shrink-0 aspect-square w-8 relative items-center justify-center bg-slate-200 rounded-full">
-                {session?.user?.image ? (
-                    <Image
-                        src={session?.user?.image || ""}
-                        alt="user profile picture"
-                        fill
-                        className="rounded-full object-cover bg-slate-300"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                ) : (
-                    <div className="h-5 w-5 text-gray-500">
-                        <UserSvg />
-                    </div>
-                )}
+        <div className="relative">
+            <div
+                ref={domNode}
+                onClick={() => setOpen((prevState) => !prevState)}
+                className="hover:cursor-pointer border border-gray-300 rounded-full hover:shadow-lg w-[74px] pr-1 pl-[10px] h-[42px] flex justify-between items-center"
+            >
+                <div>
+                    <svg
+                        className="fill-current h-[14px] w-[14px]"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                    </svg>
+                </div>
+                <div className="flex shrink-0 aspect-square w-8 relative items-center justify-center bg-slate-200 rounded-full">
+                    {session?.user?.image ? (
+                        <Image
+                            src={session?.user?.image || ""}
+                            alt="user profile picture"
+                            fill
+                            className="rounded-full object-cover bg-slate-300"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                    ) : (
+                        <div className="h-5 w-5 text-gray-500">
+                            <UserSvg />
+                        </div>
+                    )}
+                </div>
             </div>
             {open && (
                 <div className="absolute w-[250px] bg-white drop-shadow-xl top-10 right-0 mt-1 rounded-md py-2 z-50">
