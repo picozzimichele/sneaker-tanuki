@@ -23,7 +23,7 @@ export default async function Navbar() {
                 </div>
             </div>
             {/* Mobile Navbar */}
-            <div className="flex w-full h-14 bg-white items-center md:hidden fixed bottom-0 border-t z-50">
+            {/* <div className="flex w-full h-14 bg-white items-center md:hidden fixed bottom-0 border-t z-50">
                 <div className="flex w-[90%] mx-auto justify-between">
                     <MobileButton href={"/"} svg={<TanukiLogoSvg />} text="Home" />
                     <MobileButton href={`/explore`} svg={<SneakerSvg />} text="Explore" />
@@ -33,7 +33,7 @@ export default async function Navbar() {
                         text="Profile"
                     />
                 </div>
-            </div>
+            </div> */}
         </>
     );
 }
