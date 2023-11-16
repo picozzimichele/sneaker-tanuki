@@ -1,4 +1,6 @@
+import ColorSelector from "@/components/products/ColorSelector";
 import ProductImageWithBlur from "@/components/products/ProductImageWithBlur";
+import SizeSelector from "@/components/products/SizeSelector";
 import BackButton from "@/components/ui/BackButton";
 import React from "react";
 
@@ -8,6 +10,8 @@ type Props = {
 };
 
 export default async function ProductInfoPage({ searchParams, params }: Props) {
+    const colorVariants = ["blue", "red", "green", "black", "white"];
+    const sizeVariants = [7, 8, 9, 10, 11, 12];
     // const productDetails = await fetchProductDetails({
     //     productId: params.id,
     //     isClient: false,
@@ -34,6 +38,13 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
                 <div className="flex">
                     <p className="font-bold text-2xl">Nike Air Max 270</p>
                 </div>
+                {/* Size selector using url as state for sharable link and better server components instead of client */}
+                <div className="flex w-full flex-wrap gap-3">
+                    {sizeVariants.map((size) => (
+                        <SizeSelector size={size} key={size} />
+                    ))}
+                </div>
+                <div className="flex w-full flex-wrap gap-3"></div>
             </div>
         </div>
     );
