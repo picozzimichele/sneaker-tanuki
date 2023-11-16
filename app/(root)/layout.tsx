@@ -25,7 +25,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <body className={outfit.className}>
                 <AuthProvider>
                     <Navbar />
-                    <div className="mt-14">{children}</div>
+                    <div>{children}</div>
                 </AuthProvider>
             </body>
         </html>
