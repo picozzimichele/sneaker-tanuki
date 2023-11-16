@@ -13,8 +13,8 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
     const colorVariants = ["blue", "green", "black", "white", "brown"];
     const sizeVariants = ["7", "8", "9", "10", "11", "12"];
 
-    const selectedColor = (searchParams.color as string) || "black";
-    const selectedSize = (searchParams.size as string) || "7";
+    const selectedColor = (searchParams.color as string) || colorVariants[2];
+    const selectedSize = (searchParams.size as string) || sizeVariants[0];
 
     // const productDetails = await fetchProductDetails({
     //     productId: params.id,
@@ -22,7 +22,7 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
     // });
     return (
         <div className="min-h-screen flex">
-            <div className="absolute md:hidden top-2 left-2 z-50">
+            <div className="absolute md:hidden top-2 left-2 z-50 bg-white">
                 <BackButton href={"/explore"} />
             </div>
             <div className="flex flex-col min-h-full lg:flex-row w-full justify-between pt-14">
