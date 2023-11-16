@@ -32,8 +32,10 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
                 {/* Info Div */}
                 <div className="flex flex-col flex-1 lg:max-w-[50%] relative bg-gray-100 pb-5 lg:pb-16">
                     <div className="flex flex-col md:w-[80%] w-[90%] mx-auto justify-between min-h-full">
-                        <BackButton href={"/explore"} />
-                        <div className="flex flex-col">
+                        <div className="hidden md:flex ">
+                            <BackButton href={"/explore"} />
+                        </div>
+                        <div className="flex flex-col mt-6 md:mt-0">
                             <p className="text-xs font-bold text-red-700">NEW ARRIVAL</p>
                             {/* Price Info and Gender Model */}
                             <div className="flex justify-between">
