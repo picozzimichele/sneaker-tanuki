@@ -15,6 +15,7 @@ export default async function Explore({ searchParams }: Props) {
 
     const categoryParam = (searchParams.category as string) || sneakersCategories[0];
     const sortParam = (searchParams.sort as string) || sortOptions[0];
+    const filterParam = (searchParams.filter as string) || "";
 
     // fetch products based on category and sort params
     const productsResponse = await getAllProducts();
@@ -33,79 +34,93 @@ export default async function Explore({ searchParams }: Props) {
         });
 
     return (
-        <div className="w-[95%] flex mx-auto gap-4 py-16">
-            {/* Filters For Desktop */}
-            <div className="hidden lg:flex flex-col lg:w-[20%] z-20">
-                {/* Sneaker */}
-                <p className="font-bold mb-3">Sneakers</p>
-                {sneakersCategories.map((category) => (
-                    <div className="flex items-center gap-2" key={category}>
-                        {category === categoryParam && (
-                            <div className="border-[0.5px] border-red-700 w-5" />
-                        )}
-                        <Link
-                            className={`${
-                                category === categoryParam ? "text-red-700" : "text-gray-700"
-                            } text-sm hover:text-red-700`}
-                            href={`?category=${category}&sort=${sortParam}`}
-                        >
-                            {category}
-                        </Link>
-                    </div>
-                ))}
-                {/* Sort Options */}
-                <p className="font-bold mt-6 mb-3">Sort</p>
-                {sortOptions.map((sort) => (
-                    <div className="flex items-center gap-2" key={sort}>
-                        <div
-                            className={`${
-                                sort === sortParam ? "bg-red-700 border-red-700" : "border-gray-700"
-                            } border-[0.5px] aspect-square rounded-full w-3`}
-                        ></div>
-                        <Link
-                            className={`${
-                                sort === sortParam ? "text-red-700" : "text-gray-700"
-                            } text-sm hover:text-red-700`}
-                            href={`?category=${categoryParam}&sort=${sort}`}
-                        >
-                            {sort}
-                        </Link>
-                    </div>
-                ))}
-            </div>
-            {/* Main Display Grid */}
-            <div className="flex-1 flex-col">
-                {/* Mobile Page Title */}
-                <div className="lg:hidden font-bold text-xl mb-2">Explore Sneakers</div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                    {/* Handle a case where there are no shoes available */}
-                    {filteredProducts.length === 0 && (
-                        <div className="flex flex-col w-full col-span-2 sm:col-span-3 md:col-span-6 gap-4">
-                            <div className="flex items-center gap-3">
-                                <p className="text-3xl font-semibold text-pink-500">Whooops!</p>
-                                <div className="h-8 w-8 text-red-700 animate-pulse">
-                                    <SneakerSvg />
-                                </div>
-                            </div>
-                            <p className="text-md md:text-xl max-w-lg font-medium">
-                                It seems that there are no shoes for the chosen brand at the moment,
-                                come back another time or continue exploring other brands!
-                            </p>
+        <>
+            <div className="w-[95%] flex mx-auto gap-4 py-16">
+                {/* Filters For Desktop */}
+                <div className="hidden lg:flex flex-col lg:w-[20%] z-20">
+                    {/* Sneaker */}
+                    <p className="font-bold mb-3">Sneakers</p>
+                    {sneakersCategories.map((category) => (
+                        <div className="flex items-center gap-2" key={category}>
+                            {category === categoryParam && (
+                                <div className="border-[0.5px] border-red-700 w-5" />
+                            )}
+                            <Link
+                                className={`${
+                                    category === categoryParam ? "text-red-700" : "text-gray-700"
+                                } text-sm hover:text-red-700`}
+                                href={`?category=${category}&sort=${sortParam}`}
+                            >
+                                {category}
+                            </Link>
                         </div>
-                    )}
-                    {filteredProducts.map((product: any) => (
-                        <ProductCard
-                            id={product.id}
-                            brand={product.brand}
-                            category={product.category}
-                            imageURL={product.imageURL}
-                            price={product.price}
-                            key={product.id}
-                            name={product.name}
-                        />
+                    ))}
+                    {/* Sort Options */}
+                    <p className="font-bold mt-6 mb-3">Sort</p>
+                    {sortOptions.map((sort) => (
+                        <div className="flex items-center gap-2" key={sort}>
+                            <div
+                                className={`${
+                                    sort === sortParam
+                                        ? "bg-red-700 border-red-700"
+                                        : "border-gray-700"
+                                } border-[0.5px] aspect-square rounded-full w-3`}
+                            ></div>
+                            <Link
+                                className={`${
+                                    sort === sortParam ? "text-red-700" : "text-gray-700"
+                                } text-sm hover:text-red-700`}
+                                href={`?category=${categoryParam}&sort=${sort}`}
+                            >
+                                {sort}
+                            </Link>
+                        </div>
                     ))}
                 </div>
+                {/* Main Display Grid */}
+                <div className="flex-1 flex-col">
+                    {/* Mobile Page Title */}
+                    <div className="flex justify-between lg:hidden mb-2">
+                        <p className="font-bold text-xl">Explore Sneakers</p>
+                        <Link href={"/explore?filter=open"}>Filter</Link>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                        {/* Handle a case where there are no shoes available */}
+                        {filteredProducts.length === 0 && (
+                            <div className="flex flex-col w-full col-span-2 sm:col-span-3 md:col-span-6 gap-4">
+                                <div className="flex items-center gap-3">
+                                    <p className="text-3xl font-semibold text-pink-500">Whooops!</p>
+                                    <div className="h-8 w-8 text-red-700 animate-pulse">
+                                        <SneakerSvg />
+                                    </div>
+                                </div>
+                                <p className="text-md md:text-xl max-w-lg font-medium">
+                                    It seems that there are no shoes for the chosen brand at the
+                                    moment, come back another time or continue exploring other
+                                    brands!
+                                </p>
+                            </div>
+                        )}
+                        {filteredProducts.map((product: any) => (
+                            <ProductCard
+                                id={product.id}
+                                brand={product.brand}
+                                category={product.category}
+                                imageURL={product.imageURL}
+                                price={product.price}
+                                key={product.id}
+                                name={product.name}
+                            />
+                        ))}
+                    </div>
+                </div>
             </div>
-        </div>
+            {/* Filters For Mobile */}
+            {filterParam === "open" && (
+                <div className="fixed bottom-0 left-0 w-full h-full bg-white z-50">
+                    <Link href={"/explore?filter=close"}>X</Link>
+                </div>
+            )}
+        </>
     );
 }

@@ -46,7 +46,7 @@ export default function LoginComponent() {
                     {session?.user && (
                         <div className="flex flex-col">
                             <Link
-                                href={"/profile/edit"}
+                                href={"/profile"}
                                 onClick={() => {
                                     setOpen(false);
                                 }}
