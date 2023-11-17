@@ -22,8 +22,8 @@ export default function ColorSelector({
         case "black":
             bgColor = "bg-black";
             break;
-        case "white":
-            bgColor = "bg-white";
+        case "red":
+            bgColor = "bg-red-700";
             break;
         case "green":
             bgColor = "bg-green-800";

@@ -17,7 +17,6 @@ export default function ProductCard({
     brand: string;
     category: string;
 }) {
-    const testId = "test-id";
     return (
         <div className="flex flex-col">
             <Link

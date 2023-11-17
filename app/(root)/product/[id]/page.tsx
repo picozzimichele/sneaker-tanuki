@@ -2,6 +2,7 @@ import ColorSelector from "@/components/products/ColorSelector";
 import ProductImageWithBlur from "@/components/products/ProductImageWithBlur";
 import SizeSelector from "@/components/products/SizeSelector";
 import BackButton from "@/components/ui/BackButton";
+import { getProductById } from "@/lib/actions/products.actions";
 import React from "react";
 
 type Props = {
@@ -10,16 +11,15 @@ type Props = {
 };
 
 export default async function ProductInfoPage({ searchParams, params }: Props) {
-    const colorVariants = ["blue", "green", "black", "white", "brown"];
+    const colorVariants = ["blue", "green", "black", "red", "brown"];
     const sizeVariants = ["7", "8", "9", "10", "11", "12"];
 
     const selectedColor = (searchParams.color as string) || colorVariants[2];
     const selectedSize = (searchParams.size as string) || sizeVariants[0];
 
-    // const productDetails = await fetchProductDetails({
-    //     productId: params.id,
-    //     isClient: false,
-    // });
+    console.log(params.id);
+    const productDetails = await getProductById({ id: params.id });
+    console.log(productDetails);
     return (
         <div className="min-h-screen flex">
             <div className="absolute md:hidden top-2 left-2 z-50 bg-white">
@@ -27,13 +27,13 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
             </div>
             <div className="flex flex-col min-h-full lg:flex-row w-full justify-between pt-14">
                 {/* Product Picture Div */}
-                <div className="flex flex-1 lg:max-w-[50%]">
+                <div className="flex flex-1 lg:max-w-[50%] bg-[#F6F6F6]">
                     <div className="flex relative w-[90%] items-center justify-center mx-auto">
                         <ProductImageWithBlur />
                     </div>
                 </div>
                 {/* Info Div */}
-                <div className="flex flex-col flex-1 lg:max-w-[50%] relative bg-gray-100 pb-5 lg:pb-16">
+                <div className="flex flex-col flex-1 lg:max-w-[50%] relative bg-white pb-5 lg:pb-16">
                     <div className="flex flex-col md:w-[80%] w-[90%] mx-auto justify-between min-h-full">
                         <div className="hidden md:flex ">
                             <BackButton href={"/explore"} />
