@@ -1,5 +1,6 @@
 import ProductCard from "@/components/products/ProductCard";
 import { getAllProducts } from "@/lib/actions/products.actions";
+import SneakerSvg from "@/public/svg/sneakerSvg";
 import Link from "next/link";
 import React from "react";
 
@@ -9,7 +10,7 @@ type Props = {
 
 export default async function Explore({ searchParams }: Props) {
     // we use query params over state because we want to be able to share the link and avoid client components and use server components instead, query params should be validated in production
-    const sneakersCategories = ["Nike", "Adidas", "Puma", "Reebok", "Vans", "Converse"];
+    const sneakersCategories = ["Nike", "Adidas", "Hushpuppies", "Reebok", "Vans", "Converse"];
     const sortOptions = ["Newest", "Price: High to Low", "Price: Low to High"];
 
     const categoryParam = (searchParams.category as string) || sneakersCategories[0];
@@ -77,6 +78,21 @@ export default async function Explore({ searchParams }: Props) {
                 {/* Mobile Page Title */}
                 <div className="lg:hidden font-bold text-xl mb-2">Explore Sneakers</div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    {/* Handle a case where there are no shoes available */}
+                    {filteredProducts.length === 0 && (
+                        <div className="flex flex-col w-full col-span-2 sm:col-span-3 md:col-span-6 gap-4">
+                            <div className="flex items-center gap-3">
+                                <p className="text-3xl font-semibold text-pink-500">Whooops!</p>
+                                <div className="h-8 w-8 text-red-700 animate-pulse">
+                                    <SneakerSvg />
+                                </div>
+                            </div>
+                            <p className="text-md md:text-xl max-w-lg font-medium">
+                                It seems that there are no shoes for the chosen brand at the moment,
+                                come back another time or continue exploring other brands!
+                            </p>
+                        </div>
+                    )}
                     {filteredProducts.map((product: any) => (
                         <ProductCard
                             id={product.id}

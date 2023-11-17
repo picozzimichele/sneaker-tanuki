@@ -20,6 +20,27 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
 
     const productDetails = await getProductById({ id: params.id });
     const product = productDetails[0];
+
+    // helps with the bg color for the image since not all pictures have the same background color
+    let bgColor;
+    switch (product.brand.toLowerCase()) {
+        case "nike":
+            bgColor = "bg-[#F6F6F6]";
+            break;
+        case "vans":
+            bgColor = "bg-gradient-to-t from-[#F0F1F5] to-[#CDD1D6]";
+            break;
+        case "adidas":
+            bgColor = "bg-[#ECEEF0]";
+            break;
+        case "hushpuppies":
+            bgColor = "bg-white";
+            break;
+        default:
+            bgColor = "bg-[#F6F6F6]";
+            break;
+    }
+
     return (
         <div className="min-h-screen flex">
             <div className="absolute md:hidden top-2 left-2 z-50 bg-white">
@@ -27,7 +48,7 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
             </div>
             <div className="flex flex-col min-h-full lg:flex-row w-full justify-between pt-14">
                 {/* Product Picture Div */}
-                <div className="flex flex-1 lg:max-w-[50%] bg-[#F6F6F6]">
+                <div className={`flex flex-1 lg:max-w-[50%] ${bgColor}`}>
                     <div className="flex relative w-[90%] items-center justify-center mx-auto">
                         <ProductImageWithBlur imageURL={product.imageURL} />
                     </div>

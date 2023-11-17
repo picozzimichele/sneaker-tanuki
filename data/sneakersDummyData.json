@@ -169,6 +169,78 @@
             "slug": "nike-renew-run"
         },
         {
+            "id": 19,
+            "name": "Austin",
+            "brand": "HUSHPUPPIES",
+            "gender": "MEN",
+            "category": "FORMAL",
+            "price": 75,
+            "is_in_inventory": true,
+            "items_left": 2,
+            "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/Austin-Coffee_800x800.jpg?v=1574772988",
+            "slug": "austin"
+        },
+        {
+            "id": 20,
+            "name": "SS-HL-0135",
+            "brand": "HUSHPUPPIES",
+            "gender": "WOMEN",
+            "category": "FORMAL",
+            "price": 30,
+            "is_in_inventory": true,
+            "items_left": 6,
+            "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/009240000-11-SS-HL-0135-Black_800x800.jpg?v=1572264270",
+            "slug": "ss-hl-0135"
+        },
+        {
+            "id": 21,
+            "name": "SS-HL-0136",
+            "brand": "HUSHPUPPIES",
+            "gender": "WOMEN",
+            "category": "FORMAL",
+            "price": 50,
+            "is_in_inventory": true,
+            "items_left": 4,
+            "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/009250000-779-SS-HL-0136-Coffee_800x800.jpg?v=1571900372",
+            "slug": "ss-hl-0136"
+        },
+        {
+            "id": 22,
+            "name": "SS-HL-0128",
+            "brand": "HUSHPUPPIES",
+            "gender": "WOMEN",
+            "category": "FORMAL",
+            "price": 35,
+            "is_in_inventory": true,
+            "items_left": 3,
+            "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/000300242-484-SS-HL-0128-Blue_800x800.jpg?v=1583235174",
+            "slug": "ss-hl-0128"
+        },
+        {
+            "id": 23,
+            "name": "SS-MS-0075",
+            "brand": "HUSHPUPPIES",
+            "gender": "WOMEN",
+            "category": "CASUAL",
+            "price": 25,
+            "is_in_inventory": true,
+            "items_left": 7,
+            "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/009170000-479-SS-MS-0075-Red_800x800.jpg?v=1570688687",
+            "slug": "ss-ms-0075"
+        },
+        {
+            "id": 25,
+            "name": "SS-PM-0093",
+            "brand": "HUSHPUPPIES",
+            "gender": "WOMEN",
+            "category": "CASUAL",
+            "price": 30,
+            "is_in_inventory": true,
+            "items_left": 3,
+            "imageURL": "https://cdn.shopify.com/s/files/1/0016/0074/9623/products/SS-PM-0093_1_800x800.jpg?v=1570601253",
+            "slug": "ss-pm-0093"
+        },
+        {
             "id": 26,
             "name": "Nizza X Disney",
             "brand": "ADIDAS",

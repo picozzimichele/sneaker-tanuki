@@ -30,6 +30,9 @@ export default function ProductCard({
         case "adidas":
             bgColor = "bg-[#ECEEF0]";
             break;
+        case "hushpuppies":
+            bgColor = "bg-white";
+            break;
         default:
             bgColor = "bg-[#F6F6F6]";
             break;
