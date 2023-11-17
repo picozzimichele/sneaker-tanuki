@@ -1,4 +1,5 @@
 import ProductCard from "@/components/products/ProductCard";
+import { getAllProducts } from "@/lib/actions/products.actions";
 import Link from "next/link";
 import React from "react";
 
@@ -7,17 +8,22 @@ type Props = {
 };
 
 export default async function Explore({ searchParams }: Props) {
-    // we use query params over state because we want to be able to share the link and avoid client components and use server components instead
+    // we use query params over state because we want to be able to share the link and avoid client components and use server components instead, query params should be validated in production
     const sneakersCategories = ["Nike", "Adidas", "Puma", "Reebok", "Vans", "Converse"];
     const sortOptions = ["Newest", "Price: Low to High", "Price: High to Low"];
 
     const categoryParam = (searchParams.category as string) || sneakersCategories[0];
     const sortParam = (searchParams.sort as string) || sortOptions[0];
 
+    //TODO: fetch products based on category and sort params
+    const products = await getAllProducts();
+
+    console.log(products);
+
     return (
         <div className="w-[95%] flex mx-auto gap-4 py-16">
             {/* Filters */}
-            <div className="hidden lg:flex flex-col lg:w-[25%] bg-green-200">
+            <div className="hidden lg:flex flex-col lg:w-[20%] z-20">
                 {/* Sneaker */}
                 <p className="font-bold mb-3">Sneakers</p>
                 {sneakersCategories.map((category) => (
@@ -39,9 +45,11 @@ export default async function Explore({ searchParams }: Props) {
                 <p className="font-bold mt-6 mb-3">Sort</p>
                 {sortOptions.map((sort) => (
                     <div className="flex items-center gap-2" key={sort}>
-                        {sort === sortParam && (
-                            <div className="border-[0.5px] aspect-square rounded-full border-red-700 w-3"></div>
-                        )}
+                        <div
+                            className={`${
+                                sort === sortParam ? "bg-red-700 border-red-700" : "border-gray-700"
+                            } border-[0.5px] aspect-square rounded-full w-3`}
+                        ></div>
                         <Link
                             className={`${
                                 sort === sortParam ? "text-red-700" : "text-gray-700"
