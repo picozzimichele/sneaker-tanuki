@@ -74,7 +74,7 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
                         </div>
                         {/* Size & Color selectors using url as state for sharable link and better server components instead of client */}
                         <div className="flex flex-col gap-2">
-                            <p className="text-xs hidden lg:block">Select Size</p>
+                            <p className="text-xs block">Select Size</p>
                             <div className="flex w-full flex-wrap gap-3">
                                 {sizeVariants.map((size) => (
                                     <SizeSelector
@@ -87,7 +87,7 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
                             </div>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <p className="text-xs hidden lg:block">Select Color</p>
+                            <p className="text-xs">Select Color</p>
                             <div className="flex w-full flex-wrap gap-3">
                                 {colorVariants.map((color) => (
                                     <ColorSelector
