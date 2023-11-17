@@ -33,7 +33,7 @@ export default async function Explore({ searchParams }: Props) {
 
     return (
         <div className="w-[95%] flex mx-auto gap-4 py-16">
-            {/* Filters */}
+            {/* Filters For Desktop */}
             <div className="hidden lg:flex flex-col lg:w-[20%] z-20">
                 {/* Sneaker */}
                 <p className="font-bold mb-3">Sneakers</p>
@@ -73,7 +73,9 @@ export default async function Explore({ searchParams }: Props) {
                 ))}
             </div>
             {/* Main Display Grid */}
-            <div className="flex-1">
+            <div className="flex-1 flex-col">
+                {/* Mobile Page Title */}
+                <div className="lg:hidden font-bold text-xl mb-2">Explore Sneakers</div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                     {filteredProducts.map((product: any) => (
                         <ProductCard

@@ -1,7 +1,5 @@
 import ProductHighlight from "@/components/products/ProductHighlight";
-import ProductImageWithBlur from "@/components/products/ProductImageWithBlur";
 import { getProductById } from "@/lib/actions/products.actions";
-import { splitName } from "@/utils/helperFunctions";
 import Link from "next/link";
 
 export default async function Home() {
