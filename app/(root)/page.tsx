@@ -12,8 +12,8 @@ export default async function Home() {
     const highlightProduct = getMainHighlightProduct[0];
     const secondaryHighlightProduct = getSecondaryHighlightProduct[0];
     return (
-        <Link href={"/explore"} className="flex w-[95%] mx-auto pt-16 min-h-screen pb-10">
-            <div className="flex flex-col md:flex-row w-full mx-auto">
+        <Link href={"/explore"} className="flex w-[95%] h-full mx-auto pt-16 min-h-screen pb-10">
+            <div className="flex flex-col md:flex-row w-full mx-auto gap-6 md:gap-0">
                 {/* Column Logo and Subtitles */}
                 <div className="hidden lg:flex w-[10%] flex-col">
                     <div className="h-[30%] pt-[60px]">
@@ -30,7 +30,7 @@ export default async function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="flex w-full h-full md:w-[40%] md:pr-10">
+                <div className="flex w-full h-full min-h-full md:w-[40%] md:pr-10">
                     <div className="flex flex-col h-full w-full">
                         {/* Main Product */}
                         <ProductHighlight
@@ -40,7 +40,7 @@ export default async function Home() {
                         />
                     </div>
                 </div>
-                <div className="flex flex-col w-full h-full md:w-[20%]">
+                <div className="flex flex-col w-full h-full min-h-full md:w-[20%]">
                     <div className="flex flex-col w-full md:h-1/2 h-full">
                         <ProductHighlight
                             objectCover={true}
@@ -51,15 +51,13 @@ export default async function Home() {
                     </div>
                     <div className="flex flex-col justify-end w-full flex-1 ">
                         <p className="text-3xl underline font-extralight">
-                            Are you
-                            <br />
-                            A shoes
-                            <br />
+                            Are you <br className="hidden md:flex" /> A shoes{" "}
+                            <br className="hidden md:flex" />
                             Addict ?
                         </p>
                     </div>
                 </div>
-                <div className="items-end justify-end flex flex-col h-full md:pl-20">
+                <div className="items-end justify-end flex flex-col h-full min-h-full md:pl-20">
                     <div className="flex flex-col w-full h-full md:h-1/2">
                         {/* Main Product */}
                         <ProductHighlight
