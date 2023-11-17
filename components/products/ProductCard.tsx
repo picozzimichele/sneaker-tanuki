@@ -1,6 +1,7 @@
 import React from "react";
 import ProductImageWithBlur from "./ProductImageWithBlur";
 import Link from "next/link";
+import { splitName } from "@/utils/helperFunctions";
 
 export default function ProductCard({
     id,
@@ -29,7 +30,7 @@ export default function ProductCard({
             </Link>
             {/* Details and Price */}
             <div className="flex w-full flex-col">
-                <p className="font-medium">{name.split(" ").slice(0, 3).join(" ")}</p>
+                <p className="font-medium">{splitName(name)}</p>
                 <p className="text-gray-500 font-light text-xs">$ {price}</p>
             </div>
         </div>
