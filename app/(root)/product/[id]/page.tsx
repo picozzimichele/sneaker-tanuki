@@ -3,6 +3,7 @@ import ProductImageWithBlur from "@/components/products/ProductImageWithBlur";
 import SizeSelector from "@/components/products/SizeSelector";
 import BackButton from "@/components/ui/BackButton";
 import { getProductById } from "@/lib/actions/products.actions";
+import { capitalizeString } from "@/utils/helperFunctions";
 import React from "react";
 
 type Props = {
@@ -19,7 +20,8 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
 
     console.log(params.id);
     const productDetails = await getProductById({ id: params.id });
-    console.log(productDetails);
+    const product = productDetails[0];
+    console.log(product);
     return (
         <div className="min-h-screen flex">
             <div className="absolute md:hidden top-2 left-2 z-50 bg-white">
@@ -29,7 +31,7 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
                 {/* Product Picture Div */}
                 <div className="flex flex-1 lg:max-w-[50%] bg-[#F6F6F6]">
                     <div className="flex relative w-[90%] items-center justify-center mx-auto">
-                        <ProductImageWithBlur />
+                        <ProductImageWithBlur imageURL={product.imageURL} />
                     </div>
                 </div>
                 {/* Info Div */}
@@ -42,12 +44,14 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
                             <p className="text-xs font-bold text-red-700">NEW ARRIVAL</p>
                             {/* Price Info and Gender Model */}
                             <div className="flex justify-between">
-                                <p className="text-sm">Men&apos;s Sneaker</p>
-                                <p className="font-semibold">$ 350</p>
+                                <p className="text-sm">
+                                    {capitalizeString(product.gender)}&apos;s Sneaker
+                                </p>
+                                <p className="font-semibold">$ {product.price}</p>
                             </div>
                         </div>
                         <div className="flex">
-                            <p className="font-bold text-2xl">Nike Air Max 270</p>
+                            <p className="font-bold text-2xl">{product.name}</p>
                         </div>
                         {/* Size & Color selectors using url as state for sharable link and better server components instead of client */}
                         <div className="flex flex-col gap-2">
