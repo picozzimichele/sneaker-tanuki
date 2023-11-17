@@ -2,11 +2,11 @@
 import React from "react";
 import Image from "next/image";
 
-export default function ProductImageWithBlur() {
+export default function ProductImageWithBlur({ imageURL }: { imageURL: string }) {
     return (
         <Image
             alt="listing"
-            src={"/images/sneakers/Air-Jordan-1-Retro-High-OG-Royal-Reimagined-Product.avif"}
+            src={imageURL}
             fill
             className="object-contain blur-lg"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

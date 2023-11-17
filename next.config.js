@@ -18,6 +18,14 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "firebasestorage.googleapis.com",
             },
+            {
+                protocol: "https",
+                hostname: "static.nike.com",
+            },
+            {
+                protocol: "https",
+                hostname: "cdn.shopify.com",
+            },
         ],
     },
 };

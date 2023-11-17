@@ -65,7 +65,15 @@ export default async function Explore({ searchParams }: Props) {
             <div className="flex-1">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {productsArray.map((product: any) => (
-                        <ProductCard key={product.id} />
+                        <ProductCard
+                            id={product.id}
+                            brand={product.brand}
+                            category={product.category}
+                            imageURL={product.imageURL}
+                            price={product.price}
+                            key={product.id}
+                            name={product.name}
+                        />
                     ))}
                 </div>
             </div>
