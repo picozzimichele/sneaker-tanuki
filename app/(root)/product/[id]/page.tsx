@@ -18,10 +18,8 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
     const selectedColor = (searchParams.color as string) || colorVariants[2];
     const selectedSize = (searchParams.size as string) || sizeVariants[0];
 
-    console.log(params.id);
     const productDetails = await getProductById({ id: params.id });
     const product = productDetails[0];
-    console.log(product);
     return (
         <div className="min-h-screen flex">
             <div className="absolute md:hidden top-2 left-2 z-50 bg-white">

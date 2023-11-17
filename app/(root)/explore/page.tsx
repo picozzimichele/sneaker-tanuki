@@ -10,7 +10,7 @@ type Props = {
 export default async function Explore({ searchParams }: Props) {
     // we use query params over state because we want to be able to share the link and avoid client components and use server components instead, query params should be validated in production
     const sneakersCategories = ["Nike", "Adidas", "Puma", "Reebok", "Vans", "Converse"];
-    const sortOptions = ["Newest", "Price: Low to High", "Price: High to Low"];
+    const sortOptions = ["Newest", "Price: High to Low", "Price: Low to High"];
 
     const categoryParam = (searchParams.category as string) || sneakersCategories[0];
     const sortParam = (searchParams.sort as string) || sortOptions[0];
@@ -18,7 +18,18 @@ export default async function Explore({ searchParams }: Props) {
     //TODO: fetch products based on category and sort params
     const productsResponse = await getAllProducts();
     const productsArray = productsResponse.products;
-    console.log(productsArray);
+
+    // simple logic to filter the products based on the category param and sort them based on the sort param
+    const filteredProducts = productsArray
+        .filter((product: any) => product.brand.toLowerCase() === categoryParam.toLowerCase())
+
+        .sort((a: any, b: any) => {
+            // Price: High to Low
+            if (sortParam === sortOptions[1]) return b.price - a.price;
+            // Price: Low to High
+            if (sortParam === sortOptions[2]) return a.price - b.price;
+        });
+    console.log(filteredProducts);
 
     return (
         <div className="w-[95%] flex mx-auto gap-4 py-16">
@@ -64,7 +75,7 @@ export default async function Explore({ searchParams }: Props) {
             {/* Main Display Grid */}
             <div className="flex-1">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    {productsArray.map((product: any) => (
+                    {filteredProducts.map((product: any) => (
                         <ProductCard
                             id={product.id}
                             brand={product.brand}
