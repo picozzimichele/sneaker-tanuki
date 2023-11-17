@@ -24,12 +24,13 @@ export default async function Explore({ searchParams }: Props) {
         .filter((product: any) => product.brand.toLowerCase() === categoryParam.toLowerCase())
 
         .sort((a: any, b: any) => {
+            // Newest, we dont have a date added since its dummy data we go by id
+            if (sortParam === sortOptions[0]) return b.id - a.id;
             // Price: High to Low
             if (sortParam === sortOptions[1]) return b.price - a.price;
             // Price: Low to High
             if (sortParam === sortOptions[2]) return a.price - b.price;
         });
-    console.log(filteredProducts);
 
     return (
         <div className="w-[95%] flex mx-auto gap-4 py-16">
