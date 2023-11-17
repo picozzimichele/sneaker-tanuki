@@ -2,6 +2,7 @@ import React from "react";
 import ProductImageWithBlur from "./ProductImageWithBlur";
 import Link from "next/link";
 import { splitName } from "@/utils/helperFunctions";
+import { de } from "date-fns/locale";
 
 export default function ProductCard({
     id,
@@ -18,11 +19,27 @@ export default function ProductCard({
     brand: string;
     category: string;
 }) {
+    let bgColor;
+    switch (brand.toLowerCase()) {
+        case "nike":
+            bgColor = "bg-[#F6F6F6]";
+            break;
+        case "vans":
+            bgColor = "bg-gradient-to-t from-[#F0F1F5] to-[#CDD1D6]";
+            break;
+        case "adidas":
+            bgColor = "bg-[#ECEEF0]";
+            break;
+        default:
+            bgColor = "bg-[#F6F6F6]";
+            break;
+    }
+
     return (
         <div className="flex flex-col">
             <Link
                 href={`/product/${id}`}
-                className="flex bg-[#F6F6F6] border border-gray-300 hover:border-gray-700 rounded-lg aspect-square"
+                className={`flex ${bgColor} border border-gray-300 hover:border-gray-700 rounded-lg aspect-square`}
             >
                 <div className="relative h-[70%] w-[70%] m-auto">
                     <ProductImageWithBlur imageURL={imageURL} />

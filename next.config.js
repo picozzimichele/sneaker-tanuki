@@ -26,6 +26,18 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "cdn.shopify.com",
             },
+            {
+                protocol: "https",
+                hostname: "images.vans.com",
+            },
+            {
+                protocol: "https",
+                hostname: "assets.adidas.com",
+            },
+            {
+                protocol: "https",
+                hostname: "assets.reebok.com",
+            },
         ],
     },
 };
