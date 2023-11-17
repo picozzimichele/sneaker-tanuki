@@ -6,15 +6,17 @@ export default function ProductHighlight({
     imageURL,
     name,
     price,
+    objectCover,
 }: {
     imageURL: string;
     name: string;
     price: number;
+    objectCover?: boolean;
 }) {
     return (
         <div className="flex flex-col h-full">
             <div className="flex w-full relative h-full bg-[#F6F6F6]">
-                <ProductImageWithBlur imageURL={imageURL} />
+                <ProductImageWithBlur objectCover={objectCover} imageURL={imageURL} />
             </div>
             <div className="flex w-full items-center justify-end gap-6">
                 <p className="font-bold text-xs uppercase">{splitName(name)}</p>
