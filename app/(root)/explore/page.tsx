@@ -16,9 +16,9 @@ export default async function Explore({ searchParams }: Props) {
     const sortParam = (searchParams.sort as string) || sortOptions[0];
 
     //TODO: fetch products based on category and sort params
-    const products = await getAllProducts();
-
-    console.log(products);
+    const productsResponse = await getAllProducts();
+    const productsArray = productsResponse.products;
+    console.log(productsArray);
 
     return (
         <div className="w-[95%] flex mx-auto gap-4 py-16">
@@ -64,8 +64,8 @@ export default async function Explore({ searchParams }: Props) {
             {/* Main Display Grid */}
             <div className="flex-1">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-                        <ProductCard key={item} />
+                    {productsArray.map((product: any) => (
+                        <ProductCard key={product.id} />
                     ))}
                 </div>
             </div>
