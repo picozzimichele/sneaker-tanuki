@@ -38,44 +38,48 @@ export default async function Explore({ searchParams }: Props) {
             <div className="w-[95%] flex mx-auto gap-4 py-16">
                 {/* Filters For Desktop */}
                 <div className="hidden lg:flex flex-col lg:w-[20%] z-20">
-                    {/* Sneaker */}
-                    <p className="font-bold mb-3">Sneakers</p>
-                    {sneakersCategories.map((category) => (
-                        <div className="flex items-center gap-2" key={category}>
-                            {category === categoryParam && (
-                                <div className="border-[0.5px] border-red-700 w-5" />
-                            )}
-                            <Link
-                                className={`${
-                                    category === categoryParam ? "text-red-700" : "text-gray-700"
-                                } text-sm hover:text-red-700`}
-                                href={`?category=${category}&sort=${sortParam}`}
-                            >
-                                {category}
-                            </Link>
-                        </div>
-                    ))}
-                    {/* Sort Options */}
-                    <p className="font-bold mt-6 mb-3">Sort</p>
-                    {sortOptions.map((sort) => (
-                        <div className="flex items-center gap-2" key={sort}>
-                            <div
-                                className={`${
-                                    sort === sortParam
-                                        ? "bg-red-700 border-red-700"
-                                        : "border-gray-700"
-                                } border-[0.5px] aspect-square rounded-full w-3`}
-                            ></div>
-                            <Link
-                                className={`${
-                                    sort === sortParam ? "text-red-700" : "text-gray-700"
-                                } text-sm hover:text-red-700`}
-                                href={`?category=${categoryParam}&sort=${sort}`}
-                            >
-                                {sort}
-                            </Link>
-                        </div>
-                    ))}
+                    <div className="flex flex-col fixed">
+                        {/* Sneaker */}
+                        <p className="font-bold mb-3">Sneakers</p>
+                        {sneakersCategories.map((category) => (
+                            <div className="flex items-center gap-2" key={category}>
+                                {category === categoryParam && (
+                                    <div className="border-[0.5px] border-red-700 w-5" />
+                                )}
+                                <Link
+                                    className={`${
+                                        category === categoryParam
+                                            ? "text-red-700"
+                                            : "text-gray-700"
+                                    } text-sm hover:text-red-700`}
+                                    href={`?category=${category}&sort=${sortParam}`}
+                                >
+                                    {category}
+                                </Link>
+                            </div>
+                        ))}
+                        {/* Sort Options */}
+                        <p className="font-bold mt-6 mb-3">Sort</p>
+                        {sortOptions.map((sort) => (
+                            <div className="flex items-center gap-2" key={sort}>
+                                <div
+                                    className={`${
+                                        sort === sortParam
+                                            ? "bg-red-700 border-red-700"
+                                            : "border-gray-700"
+                                    } border-[0.5px] aspect-square rounded-full w-3`}
+                                ></div>
+                                <Link
+                                    className={`${
+                                        sort === sortParam ? "text-red-700" : "text-gray-700"
+                                    } text-sm hover:text-red-700`}
+                                    href={`?category=${categoryParam}&sort=${sort}`}
+                                >
+                                    {sort}
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 {/* Main Display Grid */}
                 <div className="flex-1 flex-col">
