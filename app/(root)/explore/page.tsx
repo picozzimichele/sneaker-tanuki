@@ -15,14 +15,13 @@ export default async function Explore({ searchParams }: Props) {
     const categoryParam = (searchParams.category as string) || sneakersCategories[0];
     const sortParam = (searchParams.sort as string) || sortOptions[0];
 
-    //TODO: fetch products based on category and sort params
+    // fetch products based on category and sort params
     const productsResponse = await getAllProducts();
     const productsArray = productsResponse.products;
 
     // simple logic to filter the products based on the category param and sort them based on the sort param
     const filteredProducts = productsArray
         .filter((product: any) => product.brand.toLowerCase() === categoryParam.toLowerCase())
-
         .sort((a: any, b: any) => {
             // Newest, we dont have a date added since its dummy data we go by id
             if (sortParam === sortOptions[0]) return b.id - a.id;
@@ -75,7 +74,7 @@ export default async function Explore({ searchParams }: Props) {
             </div>
             {/* Main Display Grid */}
             <div className="flex-1">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                     {filteredProducts.map((product: any) => (
                         <ProductCard
                             id={product.id}
