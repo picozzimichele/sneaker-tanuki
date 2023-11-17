@@ -18,6 +18,7 @@ export default async function Explore({ searchParams }: Props) {
         <div className="w-[95%] flex mx-auto gap-4 py-16">
             {/* Filters */}
             <div className="hidden lg:flex flex-col lg:w-[25%] bg-green-200">
+                {/* Sneaker */}
                 <p className="font-bold mb-3">Sneakers</p>
                 {sneakersCategories.map((category) => (
                     <div className="flex items-center gap-2" key={category}>
@@ -31,6 +32,23 @@ export default async function Explore({ searchParams }: Props) {
                             href={`?category=${category}&sort=${sortParam}`}
                         >
                             {category}
+                        </Link>
+                    </div>
+                ))}
+                {/* Sort Options */}
+                <p className="font-bold mt-6 mb-3">Sort</p>
+                {sortOptions.map((sort) => (
+                    <div className="flex items-center gap-2" key={sort}>
+                        {sort === sortParam && (
+                            <div className="border-[0.5px] aspect-square rounded-full border-red-700 w-3"></div>
+                        )}
+                        <Link
+                            className={`${
+                                sort === sortParam ? "text-red-700" : "text-gray-700"
+                            } text-sm hover:text-red-700`}
+                            href={`?category=${categoryParam}&sort=${sort}`}
+                        >
+                            {sort}
                         </Link>
                     </div>
                 ))}

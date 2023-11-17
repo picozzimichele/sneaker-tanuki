@@ -9,7 +9,7 @@ const outfit = Outfit({ subsets: ["latin"] });
 export const metadata: Metadata = {
     metadataBase: new URL("https://sneakerdopamine.com"),
     title: {
-        default: "Coolest Sneaker Marketplace",
+        default: "Ape Sneaker Marketplace",
         template: `%s | Dopamine Marketplace`,
     },
     description:
