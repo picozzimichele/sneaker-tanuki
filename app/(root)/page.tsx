@@ -13,9 +13,9 @@ export default async function Home() {
     const secondaryHighlightProduct = getSecondaryHighlightProduct[0];
     return (
         <Link href={"/explore"} className="flex w-[95%] mx-auto pt-16 min-h-screen pb-10">
-            <div className="grid grid-cols-12 w-full">
+            <div className="flex flex-col md:flex-row w-full mx-auto">
                 {/* Column Logo and Subtitles */}
-                <div className="col-span-1 flex flex-col">
+                <div className="hidden lg:flex w-[10%] flex-col">
                     <div className="h-[30%] pt-[60px]">
                         <p className="-rotate-90 text-xl font-bold">TANUKI</p>
                     </div>
@@ -30,8 +30,8 @@ export default async function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="col-span-4">
-                    <div className="flex flex-col h-full ">
+                <div className="flex w-full h-full md:w-[40%] md:pr-10">
+                    <div className="flex flex-col h-full w-full">
                         {/* Main Product */}
                         <ProductHighlight
                             imageURL={highlightProduct.imageURL}
@@ -40,8 +40,8 @@ export default async function Home() {
                         />
                     </div>
                 </div>
-                <div className="col-span-3 flex flex-col">
-                    <div className="flex flex-col w-full h-1/2">
+                <div className="flex flex-col w-full h-full md:w-[20%]">
+                    <div className="flex flex-col w-full md:h-1/2 h-full">
                         <ProductHighlight
                             objectCover={true}
                             imageURL={"/images/models/model-1.webp"}
@@ -59,8 +59,8 @@ export default async function Home() {
                         </p>
                     </div>
                 </div>
-                <div className="col-span-2 bg-blue-300 items-end justify-end flex">
-                    <div className="flex flex-col w-full h-1/2">
+                <div className="items-end justify-end flex flex-col h-full md:pl-20">
+                    <div className="flex flex-col w-full h-full md:h-1/2">
                         {/* Main Product */}
                         <ProductHighlight
                             imageURL={secondaryHighlightProduct.imageURL}
