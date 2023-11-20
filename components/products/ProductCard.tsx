@@ -38,7 +38,7 @@ export default function ProductCard({
     }
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-1 flex-col">
             <Link
                 href={`/product/${id}`}
                 className={`flex ${bgColor} border border-gray-300 hover:border-gray-700 rounded-lg aspect-square`}

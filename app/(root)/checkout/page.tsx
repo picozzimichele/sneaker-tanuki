@@ -41,7 +41,7 @@ export default function CheckoutPage() {
             <div className="py-16 flex flex-col w-full">
                 {filteredDataWithQuantity?.map((item, index) => (
                     <div key={index} className="flex w-full h-40 bg-green-400">
-                        <div className="bg-gray-200">
+                        <div className="bg-gray-200 flex aspect-square">
                             <ProductCard
                                 id={item.id.toString()}
                                 name={item.name}
