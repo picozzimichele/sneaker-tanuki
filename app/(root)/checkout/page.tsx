@@ -7,13 +7,15 @@ import MinusSvg from "@/public/svg/minusSvg";
 import PlusSvg from "@/public/svg/plusSvg";
 import { capitalizeString, getValuesAndQuantities } from "@/utils/helperFunctions";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
 export default function CheckoutPage() {
     // In a real case scenario with database the call here should be handled by the server component rather than here
     // Since we do not have an actual database call, but only limited dummy data this will do for testing purposes with filtering on the client side that has access to local storage and context
     // fetch products based on category and sort params
-    const { selectedProducts, setSelectedProducts } = useContext(ProductContext);
+    const router = useRouter();
+    const { selectedProducts, setSelectedProducts, propertyAddress } = useContext(ProductContext);
     const [mounted, setMounted] = useState(false);
 
     const quantityAndProducts = getValuesAndQuantities(selectedProducts);
@@ -124,25 +126,31 @@ export default function CheckoutPage() {
                             </div>
                         ))}
                     </section>
-                    {totalPrice > 0 && (
-                        <div className="mt-20 flex flex-col max-w-lg">
-                            <p className="font-bold text-xl">Bill Details:</p>
-                            <div className="flex justify-between">
-                                <p className="font-light">Shipping</p>
-                                <p className="font-light">$ 10</p>
-                            </div>
-                            <div className="flex justify-between">
-                                <p className="font-light">Items total</p>
-                                <p className="font-light">$ {totalPrice}</p>
-                            </div>
-                        </div>
-                    )}
                     {filteredDataWithQuantity?.length > 0 && (
                         <section className="flex flex-col max-w-lg mt-6 gap-3">
                             <p className="font-bold text-xl">Shipping Details:</p>
                             <GoogleAutosuggest />
-                            <div></div>
                         </section>
+                    )}
+                    {totalPrice > 0 && (
+                        <div className="mt-6 flex flex-col max-w-lg">
+                            <p className="font-bold text-xl">Bill Details:</p>
+                            <div className="flex justify-between">
+                                <p className="font-light text-sm">Shipping</p>
+                                <p className="font-light text-sm">$ 10</p>
+                            </div>
+                            <div className="flex justify-between">
+                                <p className="font-light text-sm">Items total</p>
+                                <p className="font-light text-sm">$ {totalPrice}</p>
+                            </div>
+                            <button
+                                disabled={totalPrice === 0 || !propertyAddress.streetAddress.length}
+                                onClick={() => router.push("/checkout/payment")}
+                                className="flex w-full h-10 bg-blue-600 hover:bg-blue-700 items-center justify-center rounded-md hover:cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-gray-300 disabled:bg-gray-300 mt-10"
+                            >
+                                <p className="text-white text-sm">Proceed to payment</p>
+                            </button>
+                        </div>
                     )}
                 </div>
             </div>
