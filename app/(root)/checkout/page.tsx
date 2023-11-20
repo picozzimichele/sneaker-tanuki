@@ -52,10 +52,28 @@ export default function CheckoutPage() {
         mounted && (
             <div className="py-16 flex flex-col w-full gap-10">
                 {filteredDataWithQuantity?.length === 0 && (
-                    <Link href={"/explore"} className="text-center text-2xl">
-                        You have no products in your cart. Please add some products to your cart
-                        from the products page.
-                    </Link>
+                    <>
+                        <Link href={"/explore"} className="text-center text-2xl">
+                            You have no products in your cart. Please add some products to your cart
+                            from the products page.
+                        </Link>
+                        <div className="flex w-full items-center">
+                            <p>Here below some products that might interest you</p>
+                        </div>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+                            {productDetails.products.slice(0, 12).map((product, index) => (
+                                <ProductCard
+                                    id={product.id.toString()}
+                                    brand={product.brand}
+                                    category={product.category}
+                                    imageURL={product.imageURL}
+                                    price={product.price}
+                                    key={product.id}
+                                    name={product.name}
+                                />
+                            ))}
+                        </div>
+                    </>
                 )}
                 {filteredDataWithQuantity?.map((item, index) => (
                     <div key={index} className="flex w-full h-40">
