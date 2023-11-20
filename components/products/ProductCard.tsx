@@ -2,7 +2,6 @@ import React from "react";
 import ProductImageWithBlur from "./ProductImageWithBlur";
 import Link from "next/link";
 import { splitName } from "@/utils/helperFunctions";
-import { de } from "date-fns/locale";
 
 export default function ProductCard({
     id,

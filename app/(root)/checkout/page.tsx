@@ -1,4 +1,5 @@
 "use client";
+import ProductCard from "@/components/products/ProductCard";
 import { ProductContext } from "@/context/ProductContext";
 import dummyDateJSON from "@/data/sneakersDummyData.json"; // dummy data for testing purposes
 import { getValuesAndQuantities } from "@/utils/helperFunctions";
@@ -21,8 +22,14 @@ export default function CheckoutPage() {
         const quantity = quantityAndProducts.find(
             (product) => product.value === item.id.toString()
         );
-        return { ...item, quantity: quantity?.quantity };
+        return { ...item, quantity: quantity?.quantity as number };
     });
+
+    // this should be handled by the server component in a real case scenario since it is more secure
+    const totalPrice = filteredDataWithQuantity.reduce(
+        (acc, curr) => acc + curr.price * curr.quantity,
+        0
+    );
 
     useEffect(() => {
         setMounted(true);
@@ -31,12 +38,22 @@ export default function CheckoutPage() {
     return (
         // this solves hydratation issue with context, we want to make sure that the context and local storage is available before rendering the page
         mounted && (
-            <div className="py-16">
+            <div className="py-16 flex flex-col w-full">
                 {filteredDataWithQuantity?.map((item, index) => (
-                    <div key={index}>
-                        {item.name} {item.quantity}
+                    <div key={index} className="flex w-full h-40 bg-green-400">
+                        <div className="bg-gray-200">
+                            <ProductCard
+                                id={item.id.toString()}
+                                name={item.name}
+                                price={item.price}
+                                imageURL={item.imageURL}
+                                brand={item.brand}
+                                category={item.category}
+                            />
+                        </div>
                     </div>
                 ))}
+                <div>Total price: $ {totalPrice}</div>
             </div>
         )
     );
