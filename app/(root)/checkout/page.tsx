@@ -3,6 +3,7 @@ import ProductCard from "@/components/products/ProductCard";
 import { ProductContext } from "@/context/ProductContext";
 import dummyDateJSON from "@/data/sneakersDummyData.json"; // dummy data for testing purposes
 import { getValuesAndQuantities } from "@/utils/helperFunctions";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 
 export default function CheckoutPage() {
@@ -50,6 +51,12 @@ export default function CheckoutPage() {
         // this solves hydratation issue with context, we want to make sure that the context and local storage is available before rendering the page
         mounted && (
             <div className="py-16 flex flex-col w-full gap-10">
+                {filteredDataWithQuantity?.length === 0 && (
+                    <Link href={"/explore"} className="text-center text-2xl">
+                        You have no products in your cart. Please add some products to your cart
+                        from the products page.
+                    </Link>
+                )}
                 {filteredDataWithQuantity?.map((item, index) => (
                     <div key={index} className="flex w-full h-40">
                         <div className="bg-gray-200 flex aspect-square">
@@ -84,7 +91,7 @@ export default function CheckoutPage() {
                         </div>
                     </div>
                 ))}
-                <div>Total price: $ {totalPrice}</div>
+                {totalPrice > 0 && <div>Total price: $ {totalPrice}</div>}
             </div>
         )
     );
