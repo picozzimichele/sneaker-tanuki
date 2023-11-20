@@ -3,6 +3,7 @@ import "../globals.css";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
+import { ProductContextProvider } from "@/context/ProductContext";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -24,8 +25,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <html lang="en">
             <body className={outfit.className}>
                 <AuthProvider>
-                    <Navbar />
-                    {children}
+                    <ProductContextProvider>
+                        <Navbar />
+                        {children}
+                    </ProductContextProvider>
                 </AuthProvider>
             </body>
         </html>

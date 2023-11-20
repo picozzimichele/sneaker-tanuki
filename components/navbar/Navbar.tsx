@@ -7,6 +7,7 @@ import TanukiLogoSvg from "@/public/svg/tanukiLogoSvg";
 import { getCurrentUser } from "@/lib/actions/user.actions";
 import SneakerSvg from "@/public/svg/sneakerSvg";
 import BackButton from "../ui/BackButton";
+import ShoppingCart from "@/public/svg/shoppingCart";
 
 export default async function Navbar() {
     return (
@@ -18,7 +19,12 @@ export default async function Navbar() {
                         <DesktopLink text="Tanuki" href={"/"} />
                     </div>
                     {/* Login Button image */}
-                    <LoginComponent />
+                    <div className="flex gap-8 items-center">
+                        <div className="h-6">
+                            <ShoppingCart />
+                        </div>
+                        <LoginComponent />
+                    </div>
                 </div>
             </div>
         </>
