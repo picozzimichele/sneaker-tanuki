@@ -3,6 +3,7 @@ import { ProductContext } from "@/context/ProductContext";
 import React, { useContext, useEffect, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import Loader from "@/components/ui/Loader";
+import FoxModel from "@/components/models/Fox.jsx";
 
 export default function CongratulationPage() {
     const { selectedProducts, setSelectedProducts } = useContext(ProductContext);
@@ -29,7 +30,14 @@ export default function CongratulationPage() {
                             far: 1000,
                         }}
                     >
-                        <Suspense fallback={<Loader />}></Suspense>
+                        <Suspense fallback={<Loader />}>
+                            <directionalLight intensity={0.5} />
+                            <ambientLight intensity={0.5} />
+                            <pointLight position={[10, 10, 10]} />
+                            <spotLight position={[15, 20, 5]} penumbra={1} />
+                            <hemisphereLight />
+                            <FoxModel />
+                        </Suspense>
                     </Canvas>
                 </div>
             </div>
