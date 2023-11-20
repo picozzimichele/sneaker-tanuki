@@ -141,20 +141,23 @@ export default async function Explore({ searchParams }: Props) {
                         </Link>
                     </div>
                     {/* Repeated code, should be exported as component for simplicity, however right now only used in this page */}
-                    <div className="flex flex-col w-full">
+                    <div className="flex flex-col w-[95%] mx-auto">
                         {/* Sneaker */}
-                        <p className="font-bold mb-3">Sneakers</p>
+                        <p className="font-bold text-xl mb-3">Sneakers</p>
                         {sneakersCategories.map((category) => (
-                            <div className="flex items-center gap-2" key={category}>
+                            <div
+                                className="flex items-center gap-4 uppercase font-medium mb-2"
+                                key={category}
+                            >
                                 {category === categoryParam && (
-                                    <div className="border-[0.5px] border-red-700 w-5" />
+                                    <div className="border border-red-700 w-7" />
                                 )}
                                 <Link
                                     className={`${
                                         category === categoryParam
                                             ? "text-red-700"
                                             : "text-gray-700"
-                                    } text-sm hover:text-red-700`}
+                                    } hover:text-red-700`}
                                     href={`?category=${category}&sort=${sortParam}&filter=${filterParam}`}
                                 >
                                     {category}
@@ -162,20 +165,23 @@ export default async function Explore({ searchParams }: Props) {
                             </div>
                         ))}
                         {/* Sort Options */}
-                        <p className="font-bold mt-6 mb-3">Sort</p>
+                        <p className="font-bold text-xl mt-12 mb-6">Sort</p>
                         {sortOptions.map((sort) => (
-                            <div className="flex items-center gap-2" key={sort}>
+                            <div
+                                className="flex items-center gap-4 uppercase font-medium mb-4"
+                                key={sort}
+                            >
                                 <div
                                     className={`${
                                         sort === sortParam
                                             ? "bg-red-700 border-red-700"
                                             : "border-gray-700"
-                                    } border-[0.5px] aspect-square rounded-full w-3`}
+                                    } border-[0.5px] aspect-square rounded-full w-4`}
                                 ></div>
                                 <Link
                                     className={`${
                                         sort === sortParam ? "text-red-700" : "text-gray-700"
-                                    } text-sm hover:text-red-700`}
+                                    } hover:text-red-700`}
                                     href={`?category=${categoryParam}&sort=${sort}&filter=${filterParam}`}
                                 >
                                     {sort}
