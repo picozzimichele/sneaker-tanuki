@@ -5,8 +5,9 @@ import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 
 export default function CheckoutCart() {
-    const [mounted, setMounted] = useState(false);
     const { selectedProducts } = useContext(ProductContext);
+    // this is to make sure that the cart icon is not rendered on the server side
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
