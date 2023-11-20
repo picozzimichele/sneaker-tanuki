@@ -21,6 +21,7 @@ export default async function Explore({ searchParams }: Props) {
 
     // fetch products based on category and sort params
     const productsResponse = await getAllProducts();
+
     const productsArray = productsResponse.products;
 
     // simple logic to filter the products based on the category param and sort them based on the sort param
