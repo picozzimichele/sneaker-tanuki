@@ -8,6 +8,7 @@ import { getCurrentUser } from "@/lib/actions/user.actions";
 import SneakerSvg from "@/public/svg/sneakerSvg";
 import BackButton from "../ui/BackButton";
 import ShoppingCart from "@/public/svg/shoppingCart";
+import Link from "next/link";
 
 export default async function Navbar() {
     return (
@@ -20,9 +21,10 @@ export default async function Navbar() {
                     </div>
                     {/* Login Button image */}
                     <div className="flex gap-8 items-center">
-                        <div className="h-6">
+                        {/* Checkout Icon */}
+                        <Link className="hover:text-red-700 h-6" href={"/checkout"}>
                             <ShoppingCart />
-                        </div>
+                        </Link>
                         <LoginComponent />
                     </div>
                 </div>

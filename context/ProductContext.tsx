@@ -1,11 +1,22 @@
 "use client";
+import { type } from "os";
 import { ReactNode, createContext, useState } from "react";
 
-export const ProductContext = createContext({});
+type ProductContext = {
+    selectedProducts: any[];
+    setSelectedProducts: any;
+};
+
+export const ProductContext = createContext<ProductContext>({
+    selectedProducts: [],
+    setSelectedProducts: () => {},
+});
 
 export const ProductContextProvider = ({ children }: { children: ReactNode }) => {
-    const [selectedProcuts, setSelectedProducts] = useState([]);
+    const [selectedProducts, setSelectedProducts] = useState([]);
     return (
-        <ProductContext.Provider value={{ selectedProcuts }}>{children}</ProductContext.Provider>
+        <ProductContext.Provider value={{ selectedProducts, setSelectedProducts }}>
+            {children}
+        </ProductContext.Provider>
     );
 };
