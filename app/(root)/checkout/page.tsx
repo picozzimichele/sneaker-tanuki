@@ -51,65 +51,68 @@ export default function CheckoutPage() {
         // this solves hydratation issue with context, we want to make sure that the context and local storage is available before rendering the page
         mounted && (
             <div className="py-16 flex flex-col w-full gap-10">
-                {filteredDataWithQuantity?.length === 0 && (
-                    <>
-                        <Link href={"/explore"} className="text-center text-2xl">
-                            You have no products in your cart. Please add some products to your cart
-                            from the products page.
-                        </Link>
-                        <div className="flex w-full items-center">
-                            <p>Here below some products that might interest you</p>
-                        </div>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
-                            {productDetails.products.slice(0, 12).map((product, index) => (
+                <div className="flex flex-col w-[95%] mx-auto">
+                    {/* Empty Product Cart */}
+                    {filteredDataWithQuantity?.length === 0 && (
+                        <>
+                            <Link href={"/explore"} className="text-xl hover:text-red-700">
+                                You have no products in your cart. Go back and explore some more!
+                            </Link>
+                            <div className="flex w-full mt-2">
+                                <p>Here below some products that might interest you</p>
+                            </div>
+                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 mt-6">
+                                {productDetails.products.slice(0, 12).map((product, index) => (
+                                    <ProductCard
+                                        id={product.id.toString()}
+                                        brand={product.brand}
+                                        category={product.category}
+                                        imageURL={product.imageURL}
+                                        price={product.price}
+                                        key={product.id}
+                                        name={product.name}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )}
+                    {/* Filled Product Cart */}
+                    {filteredDataWithQuantity?.map((item, index) => (
+                        <div key={index} className="flex w-full h-40">
+                            <div className="bg-gray-200 flex aspect-square">
                                 <ProductCard
-                                    id={product.id.toString()}
-                                    brand={product.brand}
-                                    category={product.category}
-                                    imageURL={product.imageURL}
-                                    price={product.price}
-                                    key={product.id}
-                                    name={product.name}
+                                    id={item.id.toString()}
+                                    name={item.name}
+                                    price={item.price}
+                                    imageURL={item.imageURL}
+                                    brand={item.brand}
+                                    category={item.category}
                                 />
-                            ))}
+                            </div>
+                            <div className="flex flex-col justify-center gap-2 px-5">
+                                <div>Quantity: {item.quantity}</div>
+                                <div>Price: $ {item.price}</div>
+                                <button
+                                    onClick={() => {
+                                        removeProductFromCart(item.id.toString());
+                                    }}
+                                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md"
+                                >
+                                    -
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        addProductToCart(item.id.toString());
+                                    }}
+                                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md"
+                                >
+                                    +
+                                </button>
+                            </div>
                         </div>
-                    </>
-                )}
-                {filteredDataWithQuantity?.map((item, index) => (
-                    <div key={index} className="flex w-full h-40">
-                        <div className="bg-gray-200 flex aspect-square">
-                            <ProductCard
-                                id={item.id.toString()}
-                                name={item.name}
-                                price={item.price}
-                                imageURL={item.imageURL}
-                                brand={item.brand}
-                                category={item.category}
-                            />
-                        </div>
-                        <div className="flex flex-col justify-center gap-2 px-5">
-                            <div>Quantity: {item.quantity}</div>
-                            <div>Price: $ {item.price}</div>
-                            <button
-                                onClick={() => {
-                                    removeProductFromCart(item.id.toString());
-                                }}
-                                className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md"
-                            >
-                                -
-                            </button>
-                            <button
-                                onClick={() => {
-                                    addProductToCart(item.id.toString());
-                                }}
-                                className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md"
-                            >
-                                +
-                            </button>
-                        </div>
-                    </div>
-                ))}
-                {totalPrice > 0 && <div>Total price: $ {totalPrice}</div>}
+                    ))}
+                    {totalPrice > 0 && <div>Total price: $ {totalPrice}</div>}
+                </div>
             </div>
         )
     );
