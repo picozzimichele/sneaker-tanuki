@@ -2,7 +2,7 @@
 import GoogleAutosuggest from "@/components/checkout/GoogleAutosuggest";
 import ProductCard from "@/components/products/ProductCard";
 import { ProductContext } from "@/context/ProductContext";
-import dummyDateJSON from "@/data/sneakersDummyData.json"; // dummy data for testing purposes
+import dummyDataJSON from "@/data/sneakersDummyData.json"; // dummy data for testing purposes
 import MinusSvg from "@/public/svg/minusSvg";
 import PlusSvg from "@/public/svg/plusSvg";
 import { capitalizeString, getValuesAndQuantities } from "@/utils/helperFunctions";
@@ -19,7 +19,7 @@ export default function CheckoutPage() {
     const [mounted, setMounted] = useState(false);
 
     const quantityAndProducts = getValuesAndQuantities(selectedProducts);
-    const productDetails = dummyDateJSON;
+    const productDetails = dummyDataJSON;
     const filteredData = productDetails.products.filter((item) =>
         selectedProducts?.includes(item.id.toString())
     );
@@ -46,6 +46,11 @@ export default function CheckoutPage() {
 
     const addProductToCart = (productId: string) => {
         setSelectedProducts((prev: []) => [...prev, productId]);
+    };
+
+    // we clear the cart here for convinience
+    const completeOrder = () => {
+        router.push("/success");
     };
 
     useEffect(() => {
@@ -145,7 +150,7 @@ export default function CheckoutPage() {
                             </div>
                             <button
                                 disabled={totalPrice === 0 || !propertyAddress.streetAddress.length}
-                                onClick={() => router.push("/checkout/payment")}
+                                onClick={() => completeOrder()}
                                 className="flex w-full h-10 bg-blue-600 hover:bg-blue-700 items-center justify-center rounded-md hover:cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-gray-300 disabled:bg-gray-300 mt-10"
                             >
                                 <p className="text-white text-sm">Proceed to payment</p>
