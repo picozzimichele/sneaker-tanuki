@@ -34,8 +34,12 @@ export default function CheckoutPage() {
     const removeProductFromCart = (productId: string) => {
         const index = selectedProducts.indexOf(productId);
         if (index > -1) {
-            setSelectedProducts((prev: []) => prev.splice(index, 1));
+            setSelectedProducts((prev: []) => [...prev.slice(0, index), ...prev.slice(index + 1)]);
         }
+    };
+
+    const addProductToCart = (productId: string) => {
+        setSelectedProducts((prev: []) => [...prev, productId]);
     };
 
     useEffect(() => {
@@ -67,7 +71,15 @@ export default function CheckoutPage() {
                                 }}
                                 className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md"
                             >
-                                Remove
+                                -
+                            </button>
+                            <button
+                                onClick={() => {
+                                    addProductToCart(item.id.toString());
+                                }}
+                                className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md"
+                            >
+                                +
                             </button>
                         </div>
                     </div>
