@@ -1,6 +1,8 @@
 "use client";
 import { ProductContext } from "@/context/ProductContext";
-import React, { use, useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState, Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import Loader from "@/components/ui/Loader";
 
 export default function CongratulationPage() {
     const { selectedProducts, setSelectedProducts } = useContext(ProductContext);
@@ -11,7 +13,26 @@ export default function CongratulationPage() {
     }, [selectedProducts?.length, setSelectedProducts]);
     return (
         <div className="flex py-16 flex-col">
-            <div className="flex flex-col w-[95%] mx-auto">page</div>
+            <div className="flex flex-col w-[95%] mx-auto items-center">
+                <p className="text-3xl font-bold text-center">
+                    Step into Style, Confirming Your Stride with Every Order!
+                </p>
+                <p className="pt-6 font-light text-sm">
+                    Congratulation your order has been shipped!
+                </p>
+                <p className="font-light text-sm">Order #944502553</p>
+                <div className="relative h-full w-full">
+                    <Canvas
+                        className="w-full h-screen bg-transparent"
+                        camera={{
+                            near: 0.1,
+                            far: 1000,
+                        }}
+                    >
+                        <Suspense fallback={<Loader />}></Suspense>
+                    </Canvas>
+                </div>
+            </div>
         </div>
     );
 }
