@@ -90,7 +90,7 @@ export default async function Explore({ searchParams }: Props) {
                         <p className="font-bold text-xl">Explore Sneakers</p>
                         <Link
                             className="flex items-center gap-2 group hover:text-red-700"
-                            href={"/explore?filter=open"}
+                            href={`?category=${categoryParam}&sort=${sortParam}&filter=open`}
                         >
                             <p className="text-sm font-medium">Filter</p>
                             <div className="h-3 mt-1">
@@ -133,9 +133,55 @@ export default async function Explore({ searchParams }: Props) {
             {filterParam === "open" && (
                 <div className="fixed lg:hidden bottom-0 left-0 w-full h-full bg-white z-50">
                     <div className="flex w-full items-end justify-end p-2">
-                        <Link className="hover:text-red-700 h-4" href={"/explore?filter=close"}>
+                        <Link
+                            className="hover:text-red-700 h-4"
+                            href={`?category=${categoryParam}&sort=${sortParam}&filter=close`}
+                        >
                             <XSvg />
                         </Link>
+                    </div>
+                    {/* Repeated code, should be exported as component for simplicity, however right now only used in this page */}
+                    <div className="flex flex-col w-full">
+                        {/* Sneaker */}
+                        <p className="font-bold mb-3">Sneakers</p>
+                        {sneakersCategories.map((category) => (
+                            <div className="flex items-center gap-2" key={category}>
+                                {category === categoryParam && (
+                                    <div className="border-[0.5px] border-red-700 w-5" />
+                                )}
+                                <Link
+                                    className={`${
+                                        category === categoryParam
+                                            ? "text-red-700"
+                                            : "text-gray-700"
+                                    } text-sm hover:text-red-700`}
+                                    href={`?category=${category}&sort=${sortParam}&filter=${filterParam}`}
+                                >
+                                    {category}
+                                </Link>
+                            </div>
+                        ))}
+                        {/* Sort Options */}
+                        <p className="font-bold mt-6 mb-3">Sort</p>
+                        {sortOptions.map((sort) => (
+                            <div className="flex items-center gap-2" key={sort}>
+                                <div
+                                    className={`${
+                                        sort === sortParam
+                                            ? "bg-red-700 border-red-700"
+                                            : "border-gray-700"
+                                    } border-[0.5px] aspect-square rounded-full w-3`}
+                                ></div>
+                                <Link
+                                    className={`${
+                                        sort === sortParam ? "text-red-700" : "text-gray-700"
+                                    } text-sm hover:text-red-700`}
+                                    href={`?category=${categoryParam}&sort=${sort}&filter=${filterParam}`}
+                                >
+                                    {sort}
+                                </Link>
+                            </div>
+                        ))}
                     </div>
                 </div>
             )}
