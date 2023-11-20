@@ -1,6 +1,8 @@
 import ProductCard from "@/components/products/ProductCard";
 import { getAllProducts } from "@/lib/actions/products.actions";
+import FilterIconSvg from "@/public/svg/filterIconSvg";
 import SneakerSvg from "@/public/svg/sneakerSvg";
+import XSvg from "@/public/svg/xSvg";
 import Link from "next/link";
 import React from "react";
 
@@ -86,7 +88,15 @@ export default async function Explore({ searchParams }: Props) {
                     {/* Mobile Page Title */}
                     <div className="flex justify-between lg:hidden mb-2">
                         <p className="font-bold text-xl">Explore Sneakers</p>
-                        <Link href={"/explore?filter=open"}>Filter</Link>
+                        <Link
+                            className="flex items-center gap-2 group hover:text-red-700"
+                            href={"/explore?filter=open"}
+                        >
+                            <p className="text-sm font-medium">Filter</p>
+                            <div className="h-3 mt-1">
+                                <FilterIconSvg />
+                            </div>
+                        </Link>
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                         {/* Handle a case where there are no shoes available */}
@@ -121,8 +131,12 @@ export default async function Explore({ searchParams }: Props) {
             </div>
             {/* Filters For Mobile */}
             {filterParam === "open" && (
-                <div className="fixed bottom-0 left-0 w-full h-full bg-white z-50">
-                    <Link href={"/explore?filter=close"}>X</Link>
+                <div className="fixed lg:hidden bottom-0 left-0 w-full h-full bg-white z-50">
+                    <div className="flex w-full items-end justify-end p-2">
+                        <Link className="hover:text-red-700 h-4" href={"/explore?filter=close"}>
+                            <XSvg />
+                        </Link>
+                    </div>
                 </div>
             )}
         </>
