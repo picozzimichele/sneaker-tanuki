@@ -1,14 +1,7 @@
 import React from "react";
-import UserSvg from "@/public/svg/userSvg";
-import MobileButton from "./MobileButton";
 import DesktopLink from "./DesktopLink";
 import LoginComponent from "./LoginComponent";
-import TanukiLogoSvg from "@/public/svg/tanukiLogoSvg";
-import { getCurrentUser } from "@/lib/actions/user.actions";
-import SneakerSvg from "@/public/svg/sneakerSvg";
-import BackButton from "../ui/BackButton";
-import ShoppingCart from "@/public/svg/shoppingCart";
-import Link from "next/link";
+import CheckoutCart from "./CheckoutCart";
 
 export default async function Navbar() {
     return (
@@ -19,12 +12,11 @@ export default async function Navbar() {
                     <div className="md:flex gap-20 hidden">
                         <DesktopLink text="Tanuki" href={"/"} />
                     </div>
-                    {/* Login Button image */}
+                    {/* Login & Cart */}
                     <div className="flex gap-8 items-center">
                         {/* Checkout Icon */}
-                        <Link className="hover:text-red-700 h-6" href={"/checkout"}>
-                            <ShoppingCart />
-                        </Link>
+                        <CheckoutCart />
+                        {/* Login Component */}
                         <LoginComponent />
                     </div>
                 </div>

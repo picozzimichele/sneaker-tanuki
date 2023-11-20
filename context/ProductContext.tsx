@@ -1,5 +1,4 @@
 "use client";
-import { type } from "os";
 import { ReactNode, createContext, useState } from "react";
 
 type ProductContext = {

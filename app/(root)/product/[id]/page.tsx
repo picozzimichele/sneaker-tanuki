@@ -1,3 +1,4 @@
+import AddToCartButton from "@/components/products/AddToCartButton";
 import ColorSelector from "@/components/products/ColorSelector";
 import ProductImageWithBlur from "@/components/products/ProductImageWithBlur";
 import SizeSelector from "@/components/products/SizeSelector";
@@ -111,9 +112,7 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
                             </p>
                         </div>
                         <div className="flex w-full">
-                            <div className="flex w-full h-10 bg-blue-600 hover:bg-blue-700 items-center justify-center rounded-md hover:cursor-pointer lg:max-w-[200px]">
-                                <p className="text-white text-sm">Add to Cart</p>
-                            </div>
+                            <AddToCartButton productId={params.id} />
                         </div>
                     </div>
                 </div>
