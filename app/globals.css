@@ -30,6 +30,42 @@
     animation-name: fadeIn;
 }
 
+/* SVG ANIMATION */
+.svgpathryno {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: dash 10s forwards;
+}
+.svggryno {
+    animation: fill-in 7s 4s forwards;
+    fill-opacity: 0;
+}
+
+.svgpath {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash 10s forwards;
+    height: 25px;
+    width: 25px;
+}
+
+.svgg {
+    animation: fill-in 2s 4s forwards;
+    fill-opacity: 0;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill-in {
+    to {
+        fill-opacity: 1;
+    }
+}
+
 /* Remove from number input */
 
 /* Chrome, Safari, Edge, Opera */

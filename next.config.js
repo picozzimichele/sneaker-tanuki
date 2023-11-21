@@ -38,6 +38,10 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "assets.reebok.com",
             },
+            {
+                protocol: "https",
+                hostname: "images.unsplash.com",
+            },
         ],
     },
 };

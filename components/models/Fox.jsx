@@ -10,7 +10,7 @@ import React, { useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { a } from "@react-spring/three";
 
-import foxScene from "../../public/models/fox.glb";
+// import foxScene from "../../public/models/fox.glb";
 
 export default function FoxModel(props) {
     const foxRef = useRef();
