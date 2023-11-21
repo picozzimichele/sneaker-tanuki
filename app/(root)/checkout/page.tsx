@@ -2,7 +2,7 @@
 import GoogleAutosuggest from "@/components/checkout/GoogleAutosuggest";
 import ProductCard from "@/components/products/ProductCard";
 import { ProductContext } from "@/context/ProductContext";
-import dummyDataJSON from "@/data/sneakersDummyData.json"; // dummy data for testing purposes
+import dummyDataJSON from "@/public/data/sneakersDummyData.json"; // dummy data for testing purposes
 import MinusSvg from "@/public/svg/minusSvg";
 import PlusSvg from "@/public/svg/plusSvg";
 import { capitalizeString, getValuesAndQuantities } from "@/utils/helperFunctions";

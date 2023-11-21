@@ -2,7 +2,7 @@
 import ProductCard from "@/components/products/ProductCard";
 import { useSession } from "next-auth/react";
 import React from "react";
-import dummyDataJSON from "@/data/sneakersDummyData.json";
+import dummyDataJSON from "@/public/data/sneakersDummyData.json";
 import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
