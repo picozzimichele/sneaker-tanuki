@@ -55,7 +55,7 @@ export default async function Home() {
                         </p>
                     </div>
                 </div>
-                <div className="items-end justify-end flex flex-col h-full min-h-full md:pl-20">
+                <div className="items-end justify-end flex flex-col h-full min-h-full md:pl-20 pb-16 md:pb-0">
                     <div className="flex flex-col w-full h-full md:h-1/2">
                         {/* Main Product */}
                         <ProductHighlight

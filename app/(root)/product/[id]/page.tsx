@@ -43,20 +43,20 @@ export default async function ProductInfoPage({ searchParams, params }: Props) {
     }
 
     return (
-        <div className="min-h-screen flex">
-            <div className="absolute md:hidden top-2 left-2 z-50 bg-white">
+        <div className="min-h-screen flex h-full">
+            <div className="fixed md:hidden top-2 left-2 z-50 bg-white">
                 <BackButton href={"/explore"} />
             </div>
             <div className="flex flex-col min-h-full lg:flex-row w-full justify-between pt-14">
                 {/* Product Picture Div */}
-                <div className={`flex flex-1 lg:max-w-[50%] ${bgColor}`}>
+                <div className={`flex min-h-[300px] flex-1 lg:max-w-[50%] ${bgColor} shrink-0`}>
                     <div className="flex relative w-[90%] items-center justify-center mx-auto">
                         <ProductImageWithBlur imageURL={product.imageURL} />
                     </div>
                 </div>
                 {/* Info Div */}
                 <div className="flex flex-col flex-1 lg:max-w-[50%] relative bg-white pb-5 lg:pb-16">
-                    <div className="flex flex-col md:w-[80%] w-[90%] mx-auto justify-between min-h-full">
+                    <div className="flex flex-col flex-1 md:w-[80%] w-[90%] mx-auto justify-between min-h-ful gap-3">
                         <div className="hidden md:flex ">
                             <BackButton href={"/explore"} />
                         </div>
