@@ -60,8 +60,8 @@ export default function CheckoutPage() {
     return (
         // this solves hydratation issue with context, we want to make sure that the context and local storage is available before rendering the page
         mounted && (
-            <div className="py-16 flex flex-col w-full">
-                <div className="flex flex-col w-[95%] mx-auto">
+            <div className="pt-16 pb-8 flex flex-col w-full h-full min-h-screen">
+                <div className="flex flex-1 flex-col w-[95%] mx-auto">
                     {/* Empty Product Cart */}
                     {filteredDataWithQuantity?.length === 0 && (
                         <>
@@ -138,15 +138,17 @@ export default function CheckoutPage() {
                         </section>
                     )}
                     {totalPrice > 0 && (
-                        <div className="mt-6 flex flex-col max-w-lg">
-                            <p className="font-bold text-xl">Bill Details:</p>
-                            <div className="flex justify-between">
-                                <p className="font-light text-sm">Shipping</p>
-                                <p className="font-light text-sm">$ 10</p>
-                            </div>
-                            <div className="flex justify-between">
-                                <p className="font-light text-sm">Items total</p>
-                                <p className="font-light text-sm">$ {totalPrice}</p>
+                        <section className="mt-6 flex flex-col flex-1 h-full max-w-lg justify-between">
+                            <div className="flex flex-col">
+                                <p className="font-bold text-xl">Bill Details:</p>
+                                <div className="flex justify-between">
+                                    <p className="font-light text-sm">Shipping</p>
+                                    <p className="font-light text-sm">$ 10</p>
+                                </div>
+                                <div className="flex justify-between">
+                                    <p className="font-light text-sm">Items total</p>
+                                    <p className="font-light text-sm">$ {totalPrice}</p>
+                                </div>
                             </div>
                             <button
                                 disabled={totalPrice === 0 || !propertyAddress.streetAddress.length}
@@ -155,7 +157,7 @@ export default function CheckoutPage() {
                             >
                                 <p className="text-white text-sm">Proceed to payment</p>
                             </button>
-                        </div>
+                        </section>
                     )}
                 </div>
             </div>

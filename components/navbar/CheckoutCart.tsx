@@ -14,7 +14,7 @@ export default function CheckoutCart() {
     }, []);
 
     return (
-        <Link className="hover:text-red-700 h-6 flex relative" href={"/checkout"}>
+        <Link className="hover:text-red-700 h-6 w-6 flex relative" href={"/checkout"}>
             <ShoppingCart />
             {mounted && selectedProducts && selectedProducts?.length > 0 && (
                 <div className="flex h-3 absolute -bottom-0.5 -right-1 bg-red-700 rounded-full aspect-square items-center justify-center">
