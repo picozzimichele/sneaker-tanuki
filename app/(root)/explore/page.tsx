@@ -1,6 +1,7 @@
 import ProductCard from "@/components/products/ProductCard";
 import { getAllProducts } from "@/lib/actions/products.actions";
 import FilterIconSvg from "@/public/svg/filterIconSvg";
+import SneakerMobileSvg from "@/public/svg/sneakerMobileSvg";
 import SneakerSvg from "@/public/svg/sneakerSvg";
 import XSvg from "@/public/svg/xSvg";
 import Link from "next/link";
@@ -87,23 +88,13 @@ export default async function Explore({ searchParams }: Props) {
                 {/* Main Display Grid */}
                 <div className="flex w-full flex-col">
                     {/* Mobile Page Title */}
-                    <div className="flex w-full lg:hidden mb-2">
-                        <p className="font-bold text-xl">Explore Sneakers</p>
+                    <div className="flex items-center w-full lg:hidden mb-2">
+                        <div className="h-5 w-5 mb-1">
+                            <SneakerMobileSvg />
+                        </div>
+                        <p className="font-bold text-xl">Sneak-ers</p>
                     </div>
                     {/* Filters for Mobile */}
-                    <div className="flex gap-3 lg:hidden bg-green-300 mb-2 overflow-x-scroll scrollbar-hide">
-                        {sneakersCategories.map((category) => (
-                            <Link
-                                key={category}
-                                className={`${
-                                    category === categoryParam ? "bg-red-700" : "bg-gray-200"
-                                } rounded-md p-1 text-sm`}
-                                href={`?category=${category}&sort=${sortParam}&filter=${filterParam}`}
-                            >
-                                {category}
-                            </Link>
-                        ))}
-                    </div>
                     <div className="flex gap-3 lg:hidden bg-green-300 mb-2 overflow-x-scroll scrollbar-hide">
                         {sortOptions.map((sort) => (
                             <Link
@@ -114,6 +105,19 @@ export default async function Explore({ searchParams }: Props) {
                                 href={`?category=${categoryParam}&sort=${sort}&filter=${filterParam}`}
                             >
                                 {sort}
+                            </Link>
+                        ))}
+                    </div>
+                    <div className="flex gap-3 lg:hidden bg-green-300 mb-2 overflow-x-scroll scrollbar-hide">
+                        {sneakersCategories.map((category) => (
+                            <Link
+                                key={category}
+                                className={`${
+                                    category === categoryParam ? "bg-red-700" : "bg-gray-200"
+                                } rounded-md p-1 text-sm`}
+                                href={`?category=${category}&sort=${sortParam}&filter=${filterParam}`}
+                            >
+                                {category}
                             </Link>
                         ))}
                     </div>
