@@ -95,7 +95,7 @@ export default function CheckoutPage() {
                     <section className="flex flex-col gap-6">
                         {filteredDataWithQuantity?.map((item, index) => (
                             <div key={index} className="flex w-full h-full border-b pb-10">
-                                <div className="flex h-full w-full aspect-square max-h-[500px]max-w-sm">
+                                <div className="flex h-full w-full aspect-square max-h-[500px] max-w-sm">
                                     <ProductCard
                                         id={item.id.toString()}
                                         name={item.name}
