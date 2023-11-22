@@ -38,7 +38,7 @@ export default async function Explore({ searchParams }: Props) {
 
     return (
         <>
-            <div className="w-[95%] flex mx-auto gap-4 py-16">
+            <div className="w-[95%] flex mx-auto gap-4 md:py-16 pt-14">
                 {/* Filters For Desktop */}
                 <div className="hidden lg:flex flex-col lg:w-[20%] z-20">
                     <div className="flex flex-col fixed">
@@ -85,20 +85,26 @@ export default async function Explore({ searchParams }: Props) {
                     </div>
                 </div>
                 {/* Main Display Grid */}
-                <div className="flex-1 flex-col">
+                <div className="flex w-full flex-col">
                     {/* Mobile Page Title */}
-                    <div className="flex justify-between lg:hidden mb-2">
+                    <div className="flex w-full lg:hidden mb-2">
                         <p className="font-bold text-xl">Explore Sneakers</p>
-                        <Link
-                            className="flex items-center gap-2 group hover:text-red-700"
-                            href={`?category=${categoryParam}&sort=${sortParam}&filter=open`}
-                        >
-                            <p className="text-sm font-medium">Filter</p>
-                            <div className="h-3 mt-1">
-                                <FilterIconSvg />
-                            </div>
-                        </Link>
                     </div>
+                    {/* Filters for Mobile */}
+                    <div className="flex gap-3 lg:hidden bg-green-300 mb-2 overflow-x-scroll scrollbar-hide">
+                        {sneakersCategories.map((category) => (
+                            <Link
+                                key={category}
+                                className={`${
+                                    category === categoryParam ? "bg-red-700" : "bg-gray-200"
+                                } rounded-md p-1 text-sm`}
+                                href={`?category=${category}&sort=${sortParam}&filter=${filterParam}`}
+                            >
+                                {category}
+                            </Link>
+                        ))}
+                    </div>
+                    {/* Sneaker display */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                         {/* Handle a case where there are no shoes available */}
                         {filteredProducts.length === 0 && (
