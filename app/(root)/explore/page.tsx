@@ -104,6 +104,19 @@ export default async function Explore({ searchParams }: Props) {
                             </Link>
                         ))}
                     </div>
+                    <div className="flex gap-3 lg:hidden bg-green-300 mb-2 overflow-x-scroll scrollbar-hide">
+                        {sortOptions.map((sort) => (
+                            <Link
+                                key={sort}
+                                className={`${
+                                    sort === sortParam ? "bg-red-700" : "bg-gray-200"
+                                } rounded-md p-1 text-sm`}
+                                href={`?category=${categoryParam}&sort=${sort}&filter=${filterParam}`}
+                            >
+                                {sort}
+                            </Link>
+                        ))}
+                    </div>
                     {/* Sneaker display */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                         {/* Handle a case where there are no shoes available */}
