@@ -13,7 +13,7 @@ export default async function Navbar() {
                         <DesktopLink text="TANUKI" href={"/"} />
                     </div>
                     {/* Login & Cart */}
-                    <div className="flex  gap-3 md:gap-8 items-center">
+                    <div className="flex  gap-5 md:gap-8 items-center">
                         {/* Checkout Icon */}
                         <CheckoutCart />
                         {/* Login Component */}

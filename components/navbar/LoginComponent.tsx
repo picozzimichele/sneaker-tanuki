@@ -14,9 +14,9 @@ export default function LoginComponent() {
         <div ref={domNode} className="relative">
             <div
                 onClick={() => setOpen((prevState) => !prevState)}
-                className="hover:cursor-pointer border border-gray-300 rounded-full hover:shadow-lg w-[74px] pr-1 pl-[10px] h-[42px] flex justify-between items-center"
+                className="hover:cursor-pointer md:border md:border-gray-300 rounded-full hover:shadow-lg md:w-[74px] md:pr-1 md:pl-[10px] md:h-[42px] flex justify-between items-center"
             >
-                <div>
+                <div className="hidden md:flex">
                     <svg
                         className="fill-current h-[14px] w-[14px]"
                         viewBox="0 0 20 20"
