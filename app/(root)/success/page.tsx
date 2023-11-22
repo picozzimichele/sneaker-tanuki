@@ -31,7 +31,7 @@ export default function CongratulationPage() {
                     <div className="h-10 w-10 z-10">
                         <SneakerSvg />
                     </div>
-                    <p className="text-center font-light z-10">
+                    <p className="text-center text-xl lg:text-2xl font-light z-10">
                         Congratulation your order has been shipped! <br />
                         Order#944502553
                     </p>
