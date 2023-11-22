@@ -95,12 +95,12 @@ export default async function Explore({ searchParams }: Props) {
                         <p className="font-bold text-xl">Sneak-ers</p>
                     </div>
                     {/* Filters for Mobile */}
-                    <div className="flex gap-3 lg:hidden bg-green-300 mb-2 overflow-x-scroll scrollbar-hide">
+                    <div className="flex gap-3 lg:hidden mb-2 overflow-x-scroll scrollbar-hide">
                         {sortOptions.map((sort) => (
                             <Link
                                 key={sort}
                                 className={`${
-                                    sort === sortParam ? "bg-red-700" : "bg-gray-200"
+                                    sort === sortParam ? "bg-[#B9F637]" : "bg-gray-200"
                                 } rounded-md p-1 text-sm`}
                                 href={`?category=${categoryParam}&sort=${sort}&filter=${filterParam}`}
                             >
@@ -108,12 +108,12 @@ export default async function Explore({ searchParams }: Props) {
                             </Link>
                         ))}
                     </div>
-                    <div className="flex gap-3 lg:hidden bg-green-300 mb-2 overflow-x-scroll scrollbar-hide">
+                    <div className="flex gap-3 lg:hidden mb-2 overflow-x-scroll scrollbar-hide">
                         {sneakersCategories.map((category) => (
                             <Link
                                 key={category}
                                 className={`${
-                                    category === categoryParam ? "bg-red-700" : "bg-gray-200"
+                                    category === categoryParam ? "bg-[#B9F637]" : "bg-gray-200"
                                 } rounded-md p-1 text-sm`}
                                 href={`?category=${category}&sort=${sortParam}&filter=${filterParam}`}
                             >
@@ -125,7 +125,7 @@ export default async function Explore({ searchParams }: Props) {
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                         {/* Handle a case where there are no shoes available */}
                         {filteredProducts.length === 0 && (
-                            <div className="flex flex-col w-full col-span-2 sm:col-span-3 md:col-span-6 gap-4">
+                            <div className="flex flex-col w-full col-span-2 sm:col-span-3 md:col-span-6 gap-4 mt-6">
                                 <div className="flex items-center gap-3">
                                     <p className="text-3xl font-semibold text-pink-500">Whooops!</p>
                                     <div className="h-8 w-8 text-red-700 animate-pulse">
@@ -153,68 +153,6 @@ export default async function Explore({ searchParams }: Props) {
                     </div>
                 </div>
             </div>
-            {/* Filters For Mobile */}
-            {filterParam === "open" && (
-                <div className="fixed lg:hidden bottom-0 left-0 w-full h-full bg-white z-50">
-                    <div className="flex w-full items-end justify-end p-2">
-                        <Link
-                            className="hover:text-red-700 h-4"
-                            href={`?category=${categoryParam}&sort=${sortParam}&filter=close`}
-                        >
-                            <XSvg />
-                        </Link>
-                    </div>
-                    {/* Repeated code, should be exported as component for simplicity, however right now only used in this page */}
-                    <div className="flex flex-col w-[95%] mx-auto">
-                        {/* Sneaker */}
-                        <p className="font-bold text-xl mb-3">Sneakers</p>
-                        {sneakersCategories.map((category) => (
-                            <div
-                                className="flex items-center gap-4 uppercase font-medium mb-2"
-                                key={category}
-                            >
-                                {category === categoryParam && (
-                                    <div className="border border-red-700 w-7" />
-                                )}
-                                <Link
-                                    className={`${
-                                        category === categoryParam
-                                            ? "text-red-700"
-                                            : "text-gray-700"
-                                    } hover:text-red-700`}
-                                    href={`?category=${category}&sort=${sortParam}&filter=${filterParam}`}
-                                >
-                                    {category}
-                                </Link>
-                            </div>
-                        ))}
-                        {/* Sort Options */}
-                        <p className="font-bold text-xl mt-12 mb-6">Sort</p>
-                        {sortOptions.map((sort) => (
-                            <div
-                                className="flex items-center gap-4 uppercase font-medium mb-4"
-                                key={sort}
-                            >
-                                <div
-                                    className={`${
-                                        sort === sortParam
-                                            ? "bg-red-700 border-red-700"
-                                            : "border-gray-700"
-                                    } border-[0.5px] aspect-square rounded-full w-4`}
-                                ></div>
-                                <Link
-                                    className={`${
-                                        sort === sortParam ? "text-red-700" : "text-gray-700"
-                                    } hover:text-red-700`}
-                                    href={`?category=${categoryParam}&sort=${sort}&filter=${filterParam}`}
-                                >
-                                    {sort}
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
         </>
     );
 }
