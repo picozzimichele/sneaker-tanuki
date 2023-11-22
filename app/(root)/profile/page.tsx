@@ -18,7 +18,10 @@ export default function ProfilePage() {
                 {session?.user && (
                     <div>
                         <p className="text-xl font-bold">
-                            Welcome back, {session?.user?.name?.split(" ")[0]}!
+                            Welcome back,{" "}
+                            <span className="text-[#477558]">
+                                {session?.user?.name?.split(" ")[0]}!
+                            </span>
                         </p>
                         <p className="text-xs font-light">{session?.user?.email}</p>
                         <p className="text-lg mt-6 font-semibold">Your Orders</p>

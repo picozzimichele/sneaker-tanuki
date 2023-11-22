@@ -48,14 +48,14 @@ export default async function Explore({ searchParams }: Props) {
                         {sneakersCategories.map((category) => (
                             <div className="flex items-center gap-2" key={category}>
                                 {category === categoryParam && (
-                                    <div className="border-[0.5px] border-red-700 w-5" />
+                                    <div className="border-[0.5px] border-green-800 w-5" />
                                 )}
                                 <Link
                                     className={`${
                                         category === categoryParam
-                                            ? "text-red-700"
+                                            ? "text-green-800"
                                             : "text-gray-700"
-                                    } text-sm hover:text-red-700`}
+                                    } text-sm hover:text-green-800`}
                                     href={`?category=${category}&sort=${sortParam}`}
                                 >
                                     {category}
@@ -69,14 +69,14 @@ export default async function Explore({ searchParams }: Props) {
                                 <div
                                     className={`${
                                         sort === sortParam
-                                            ? "bg-red-700 border-red-700"
+                                            ? "bg-green-800 border-green-800"
                                             : "border-gray-700"
                                     } border-[0.5px] aspect-square rounded-full w-3`}
                                 ></div>
                                 <Link
                                     className={`${
-                                        sort === sortParam ? "text-red-700" : "text-gray-700"
-                                    } text-sm hover:text-red-700`}
+                                        sort === sortParam ? "text-green-800" : "text-gray-700"
+                                    } text-sm hover:text-green-600`}
                                     href={`?category=${categoryParam}&sort=${sort}`}
                                 >
                                     {sort}
@@ -100,7 +100,7 @@ export default async function Explore({ searchParams }: Props) {
                             <Link
                                 key={sort}
                                 className={`${
-                                    sort === sortParam ? "bg-[#B9F637]" : "bg-gray-200"
+                                    sort === sortParam ? "bg-[#638971] text-white" : "bg-gray-200"
                                 } rounded-md p-1 text-sm`}
                                 href={`?category=${categoryParam}&sort=${sort}&filter=${filterParam}`}
                             >
@@ -113,7 +113,9 @@ export default async function Explore({ searchParams }: Props) {
                             <Link
                                 key={category}
                                 className={`${
-                                    category === categoryParam ? "bg-[#B9F637]" : "bg-gray-200"
+                                    category === categoryParam
+                                        ? "bg-[#638971] text-white"
+                                        : "bg-gray-200"
                                 } rounded-md p-1 text-sm`}
                                 href={`?category=${category}&sort=${sortParam}&filter=${filterParam}`}
                             >

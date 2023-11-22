@@ -65,7 +65,7 @@ export default function CheckoutPage() {
                     {/* Empty Product Cart */}
                     {filteredDataWithQuantity?.length === 0 && (
                         <>
-                            <Link href={"/explore"} className="text-xl hover:text-red-700">
+                            <Link href={"/explore"} className="text-xl hover:text-green-800">
                                 You have no products in your cart. Go back and explore some more!
                             </Link>
                             <div className="flex w-full mt-2">
@@ -112,7 +112,7 @@ export default function CheckoutPage() {
                                             onClick={() => {
                                                 removeProductFromCart(item.id.toString());
                                             }}
-                                            className="bg-blue-200 hover:bg-blue-400 text-white rounded-md flex w-5 h-5 items-center justify-center p-1"
+                                            className="bg-[#6a9078] hover:bg-[#638971] text-white rounded-md flex w-5 h-5 items-center justify-center p-1"
                                         >
                                             <MinusSvg />
                                         </button>
@@ -121,7 +121,7 @@ export default function CheckoutPage() {
                                             onClick={() => {
                                                 addProductToCart(item.id.toString());
                                             }}
-                                            className="bg-blue-200 hover:bg-blue-400 text-white rounded-md flex w-5 h-5 items-center justify-center p-1"
+                                            className="bg-[#6a9078] hover:bg-[#638971] text-white rounded-md flex w-5 h-5 items-center justify-center p-1"
                                         >
                                             <PlusSvg />
                                         </button>
@@ -153,7 +153,7 @@ export default function CheckoutPage() {
                             <button
                                 disabled={totalPrice === 0 || !propertyAddress.streetAddress.length}
                                 onClick={() => completeOrder()}
-                                className="flex w-full h-10 bg-blue-600 hover:bg-blue-700 items-center justify-center rounded-md hover:cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-gray-300 disabled:bg-gray-300 mt-10"
+                                className="flex w-full h-10 bg-[#638971] hover:bg-[#536F5C] items-center justify-center rounded-md hover:cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-gray-300 disabled:bg-gray-300 mt-10"
                             >
                                 <p className="text-white text-sm">Proceed to payment</p>
                             </button>

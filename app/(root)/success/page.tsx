@@ -35,7 +35,7 @@ export default function CongratulationPage() {
                         Congratulation your order has been shipped! <br />
                         Order#944502553
                     </p>
-                    <p className="text-[#536F5C] z-10">
+                    <p className="text-[#536F5C] z-10 text-center">
                         Step into Style, Confirming Your Stride with Every Order!
                     </p>
                 </div>
