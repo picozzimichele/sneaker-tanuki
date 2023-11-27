@@ -13,11 +13,11 @@ You will be able to:
 
 Website front-end is hosted on Vercel and small backend is powered by MongoDB
 
-In the repo you will find an .env example file, please get in contact if you need help setting up them, it can be difficult at times to navigate all the different API keys and secrets
+In the repo you will find an .env example file, please get in contact if you need help setting up the env file, it can be difficult at times to navigate all the different API keys and secrets
 
 ## Structure of the Repo
 
-For siplicity purposes, we are interacting with dummy JSON data that can be found in `/public/data`
+For simplicity purposes, we are interacting with dummy JSON data that can be found in `/public/data`
 
 Since the repo is using Next,js 13 with the `App` directory the project uses Server Actions over regular API calls and minimises the use of Client components when possible
 
